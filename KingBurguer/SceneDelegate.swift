@@ -25,7 +25,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         //Frame é a largura e altura do app
         window = UIWindow(frame: windowScene.coordinateSpace.bounds) // retorna o tamanho da janela
-        window?.rootViewController = ViewController()
+        window?.rootViewController = SignInViewController()
         window?.windowScene = windowScene
         //se não colocar, não renderiza a tela
         window?.makeKeyAndVisible()
