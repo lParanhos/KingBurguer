@@ -5,13 +5,19 @@
 //  Created by Leandro Paranhos on 05/01/24.
 //
 
+/**
+    Primeiro arquivo/classe que o IOS reconhece para inicializar o app, comportamentos
+    Exemplo de uso: inicialização de banco de dados, firebase e etc... (tudo que precisa configurar quando inicializa o app)
+ */
+
+
 import UIKit
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
-
+    //Chamado sempre que o aplicativo termina de inicializar
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         return true

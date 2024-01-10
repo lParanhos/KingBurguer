@@ -1,0 +1,68 @@
+#  Anotações Curso IOS
+
+## Modulo 4 - Estruturas de Pastas
+
+### AppDelegate
+Primeiro arquivo/classe que o IOS reconhece para inicializar o app, comportamentos
+Exemplo de uso: inicialização de banco de dados, firebase e etc... (tudo que precisa configurar quando inicializa o app)
+
+### SceneDelegate
+Vem após o delegate e define como a interface grafica vai ser fornecida
+
+### ViewController
+Cada tela tem um Controller (viewController) para administra-las
+    1. OUVIR OS EVENTOS DE INPUT (TOUCH)
+    2. RENDERIZAR/CONTROLAR OS COMPONENTES DE INTERFACE GRAFICA
+
+### Main.storyboard
+Interface grafica para conseguir desenhar o app. Aqui é a primeira tela do App.
+
+### Assets (Pasta)
+Onde colocamos nossos recursos (images, paleta de cores, audio, fonts)
+
+### LaunchScreen (storyboard)
+Tela inicial do app quando abrimos
+
+### Info.plist
+Definimos informações relevantes para o App (configurações do app)
+ex: acessos a camera, gps, versao do app e etc ... 
+
+## Modulo 5 - Fundação do SDK e UIKit
+
+### Fluxo de Execução
+1. LauchScreen
+2. didFinishLaunchingWithOptions
+3. scenedelegate (desenha o main storyboard)
+4. ViewController
+
+### Fundamentos de Storyboard
+Inteface gráfica para criar o app (usa o conceito de drag'n'drop para criar os componentes)
+
+### Linha do Tempo IOS
+Começou com o Objective-C
+ - era muito verbosa
+
+E do xib (xcode interface builder)
+
+2015 ou 2016 -> Swift + Storyboard
+ - Story (fluxo do app em um unico lugar)
+ - Visualmente
+ - AutoLayout (points) - Não se utiliza pixels pois cada iphone tem uma densidade e tamanho de pixel
+ 
+ Problemas do Storyboard
+  - Por baixo dos panos é um arquivo XML (scrito pelo xcode)
+  - Impossibilita um grupo de desenvolvedores por ser bem complicado versão controlle de versão.
+  - Perdemos na performance por ter que ler o XML
+  - Pra perder referencias é bem facil kk
+
+View Code
+ - mais performance por ser uma linguagem compilada  
+  
+  
+### Configurando app para viewCode
+1. Excluir o main.storyboard
+2. Remover do arquivo de configurações (info.plist)
+ - Storyboard name
+3. Remover da configuração do projeto e do build settings também
+
+### Primeira tela com ViewCode

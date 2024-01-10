@@ -5,6 +5,11 @@
 //  Created by Leandro Paranhos on 05/01/24.
 //
 
+
+/**
+    Vem após o delegate e define como a interface grafica vai ser fornecida
+ */
+
 import UIKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
