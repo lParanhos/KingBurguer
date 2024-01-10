@@ -13,15 +13,22 @@
 import UIKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
-
+    //Com storyboard era adicionado automaticamente aqui dentro nossa main
     var window: UIWindow?
 
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
-        // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
-        // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
-        guard let _ = (scene as? UIWindowScene) else { return }
+       
+        guard let windowScene = (scene as? UIWindowScene) else { return }
+        
+        //Configuração inicial
+        
+        //Frame é a largura e altura do app
+        window = UIWindow(frame: windowScene.coordinateSpace.bounds) // retorna o tamanho da janela
+        window?.rootViewController = ViewController()
+        window?.windowScene = windowScene
+        //se não colocar, não renderiza a tela
+        window?.makeKeyAndVisible()
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

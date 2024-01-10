@@ -66,3 +66,11 @@ View Code
 3. Remover da configuração do projeto e do build settings também
 
 ### Primeira tela com ViewCode
+Configuração inicial
+        //Frame é a largura e altura do app
+        window = UIWindow(frame: windowScene.coordinateSpace.bounds) // retorna o tamanho da janela
+        window?.rootViewController = ViewController()
+        window?.windowScene = windowScene
+        //se não colocar, não renderiza a tela
+        window?.makeKeyAndVisible()
+
