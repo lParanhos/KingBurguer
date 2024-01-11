@@ -25,6 +25,7 @@ class SignInViewController: UIViewController {
         let ed = UITextField()
         ed.backgroundColor = .red
         ed.placeholder = "Entre com sua senha"
+        ed.translatesAutoresizingMaskIntoConstraints = false
         
         return ed
     }()
@@ -48,9 +49,17 @@ class SignInViewController: UIViewController {
         ]
         NSLayoutConstraint.activate(emailConstraints)
         
+        let passwordConstraints = [
+            password.leadingAnchor.constraint(equalTo: email.leadingAnchor),
+            password.trailingAnchor.constraint(equalTo: email.trailingAnchor),
+            password.topAnchor.constraint(equalTo: email.bottomAnchor, constant: 10),
+            password.heightAnchor.constraint(equalToConstant: 50.0)
+        ]
+        NSLayoutConstraint.activate(passwordConstraints)
+        
         //Problemas ao usar FRAME
         // 1. tem que fazer muita matematica
-        //2. não tem autolayout
+        // 2. não tem autolayout
         //email.frame = CGRect(x: 0, y: view.bounds.size.height / 2, width: view.bounds.size.width, height: 50)
         //password.frame = CGRect(x: 0, y: (view.bounds.size.height / 2) + 50, width: view.bounds.size.width, height: 50)
     }
