@@ -30,12 +30,23 @@ class SignInViewController: UIViewController {
         return ed
     }()
     
+    let send: UIButton = {
+        let btn = UIButton()
+        btn.setTitle("Entrar", for: .normal)
+        btn.setTitleColor(.black, for: .normal)
+        btn.backgroundColor = .yellow
+        btn.translatesAutoresizingMaskIntoConstraints = false
+        
+        return btn
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         view.backgroundColor = .green
         view.addSubview(email)
         view.addSubview(password)
+        view.addSubview(send)
         
         let emailConstraints = [
             // 1. coordenadas da esquerda
@@ -56,6 +67,14 @@ class SignInViewController: UIViewController {
             password.heightAnchor.constraint(equalToConstant: 50.0)
         ]
         NSLayoutConstraint.activate(passwordConstraints)
+        
+        let sendConstraints = [
+            send.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            send.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            send.topAnchor.constraint(equalTo: password.bottomAnchor, constant: 10.0),
+            send.heightAnchor.constraint(equalToConstant: 50.0)
+        ]
+        NSLayoutConstraint.activate(sendConstraints)
         
         //Problemas ao usar FRAME
         // 1. tem que fazer muita matematica
