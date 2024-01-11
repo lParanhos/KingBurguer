@@ -29,13 +29,20 @@ class SignInViewController: UIViewController {
         
         return ed
     }()
-    
-    let send: UIButton = {
+    //Lazy var inicializa o objeto quando invocamos ele
+    //Precisamos usar a lazy, pois ao passar o self (SignViewController) a mesma ainda não foi criada
+    // Antes o send era criado e depois e a ViewController, com a lazy é o inverso
+    lazy var send: UIButton = {
         let btn = UIButton()
         btn.setTitle("Entrar", for: .normal)
         btn.setTitleColor(.black, for: .normal)
         btn.backgroundColor = .yellow
         btn.translatesAutoresizingMaskIntoConstraints = false
+        
+        // Self é a classe que vai conter a função que será disparada
+        // action: é a função a ser disparada, com o selector expomos nossa função para o objective-c
+        // for: evento em que deve ser disparado
+        btn.addTarget(self, action: #selector(sendDidTap), for: .touchUpInside)
         
         return btn
     }()
@@ -76,10 +83,7 @@ class SignInViewController: UIViewController {
         ]
         NSLayoutConstraint.activate(sendConstraints)
         
-        // Self é a classe que vai conter a função que será disparada
-        // action: é a função a ser disparada, com o selector expomos nossa função para o objective-c
-        // for: evento em que deve ser disparado
-        send.addTarget(self, action: #selector(sendDidTap), for: .touchUpInside)
+
     }
     // estrutura padrão da função
     //ao passar o _ não precisamos passar o nome da variável
