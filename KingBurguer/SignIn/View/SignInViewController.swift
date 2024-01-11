@@ -76,10 +76,14 @@ class SignInViewController: UIViewController {
         ]
         NSLayoutConstraint.activate(sendConstraints)
         
-        //Problemas ao usar FRAME
-        // 1. tem que fazer muita matematica
-        // 2. não tem autolayout
-        //email.frame = CGRect(x: 0, y: view.bounds.size.height / 2, width: view.bounds.size.width, height: 50)
-        //password.frame = CGRect(x: 0, y: (view.bounds.size.height / 2) + 50, width: view.bounds.size.width, height: 50)
+        // Self é a classe que vai conter a função que será disparada
+        // action: é a função a ser disparada, com o selector expomos nossa função para o objective-c
+        // for: evento em que deve ser disparado
+        send.addTarget(self, action: #selector(sendDidTap), for: .touchUpInside)
+    }
+    // estrutura padrão da função
+    //ao passar o _ não precisamos passar o nome da variável
+    @objc func sendDidTap(_ sender: UIButton) {
+        print("Clicou")
     }
 }
