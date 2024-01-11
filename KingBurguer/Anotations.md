@@ -74,3 +74,11 @@ Configuração inicial
         //se não colocar, não renderiza a tela
         window?.makeKeyAndVisible()
 
+### AutoLayout
+Problemas ao usar FRAME
+ 1. tem que fazer muita matematica
+ 2. não tem autolayout
+
+Com auto layout conseguimos adaptar nosso layout para qualquer dispositivo "automaticamente"
+é sempre necessário desabilitar a seguinte prop no componente para utilizar o auto layout
+myComponent.translatesAutoresizingMaskIntoConstraints = false
