@@ -82,3 +82,33 @@ Problemas ao usar FRAME
 Com auto layout conseguimos adaptar nosso layout para qualquer dispositivo "automaticamente"
 é sempre necessário desabilitar a seguinte prop no componente para utilizar o auto layout
 myComponent.translatesAutoresizingMaskIntoConstraints = false
+
+
+## Modulo 6 - Arquitetura de software mobile
+
+### Intro Arquitetura Projetos IOS
+Reponsabilidade ViewController
+1. ouvir eventos touch 
+2. Criar Layout
+
+### Arquitetura MVVM com UIKit
+
+Model
+    1. Abrir conexões com bancos
+    2. Ler arquivos 
+    3. Requests ...
+
+View (View Controller)
+    1. Eventos 
+    2. Eventos SO
+    3. Layout
+    
+ViewModel
+    1. Regra de negócio
+    2. Ações
+    3. Formatar o modelo de visualização
+    
+A view tem uma referencia da view model e vai observar o viewModel. 
+Sempre que o viewModel notificar uma mudança a view renderiza algo.
+A viewmodel observa a camada model
+
