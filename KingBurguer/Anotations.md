@@ -114,3 +114,7 @@ A viewmodel observa a camada model
 
 ### Navigation Controller
 Precisamos de um Navigation Controller para conseguir navegar pelas telas
+
+###Coordinator patter
+Configura as rotas (cria e define como vão ser navegações das telas)
+Colocamos regras de navegação e configuração

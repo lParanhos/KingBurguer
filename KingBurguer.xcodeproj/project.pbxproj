@@ -15,6 +15,7 @@
 		A8A691E92B514530007C2F23 /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8A691E82B514530007C2F23 /* SignInViewModel.swift */; };
 		A8A691EB2B514979007C2F23 /* SignInState.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8A691EA2B514979007C2F23 /* SignInState.swift */; };
 		A8A691EF2B5151F7007C2F23 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8A691EE2B5151F7007C2F23 /* SignUpViewController.swift */; };
+		A8A691F12B515688007C2F23 /* SignInCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8A691F02B515688007C2F23 /* SignInCoordinator.swift */; };
 		A8BCBCBB2B4EF5A4003702CB /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BCBCBA2B4EF5A4003702CB /* SignInViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -29,6 +30,7 @@
 		A8A691E82B514530007C2F23 /* SignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
 		A8A691EA2B514979007C2F23 /* SignInState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInState.swift; sourceTree = "<group>"; };
 		A8A691EE2B5151F7007C2F23 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		A8A691F02B515688007C2F23 /* SignInCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInCoordinator.swift; sourceTree = "<group>"; };
 		A8BCBCBA2B4EF5A4003702CB /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -104,6 +106,7 @@
 			children = (
 				A8A691E72B51451E007C2F23 /* ViewModel */,
 				A8BCBCB92B4EF578003702CB /* View */,
+				A8A691F02B515688007C2F23 /* SignInCoordinator.swift */,
 			);
 			path = SignIn;
 			sourceTree = "<group>";
@@ -191,6 +194,7 @@
 				A8A691E92B514530007C2F23 /* SignInViewModel.swift in Sources */,
 				A8BCBCBB2B4EF5A4003702CB /* SignInViewController.swift in Sources */,
 				A85428012B483F850001DD7B /* AppDelegate.swift in Sources */,
+				A8A691F12B515688007C2F23 /* SignInCoordinator.swift in Sources */,
 				A85428032B483F850001DD7B /* SceneDelegate.swift in Sources */,
 				A8A691EB2B514979007C2F23 /* SignInState.swift in Sources */,
 			);
