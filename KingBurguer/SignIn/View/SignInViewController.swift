@@ -105,6 +105,18 @@ class SignInViewController: UIViewController {
 extension SignInViewController: SignInViewModeDelegate {
     //observador
      func viewModelDidChange(state: SignInState) {
-        print("Fui notificado")
+      switch(state) {
+        case .none:
+            break
+         case .loading:
+             break
+         case .goToHome:
+             break
+         case .error(let msg):
+             let alert = UIAlertController(title: "Titulo", message: msg, preferredStyle: .alert)
+             alert.addAction(UIAlertAction(title: "Ok", style: .default))
+             self.present(alert, animated: true)
+             break
+         }
     }
 }
