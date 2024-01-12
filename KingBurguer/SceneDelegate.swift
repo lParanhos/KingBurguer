@@ -20,16 +20,21 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
        
         guard let windowScene = (scene as? UIWindowScene) else { return }
+        
         //Passa a viewmodel para a controller
         let viewModel  = SignInViewModel()
         let signInVC = SignInViewController()
         signInVC.viewModel = viewModel
         
+        //configura a NVC
+        let navigationVC = UINavigationController(rootViewController: signInVC)
+        
         //Configuração inicial
         
         //Frame é a largura e altura do app
         window = UIWindow(frame: windowScene.coordinateSpace.bounds) // retorna o tamanho da janela
-        window?.rootViewController = signInVC
+        //precisamos colocar o navigation controller como nosso root
+        window?.rootViewController = navigationVC
         window?.windowScene = windowScene
         //se não colocar, não renderiza a tela
         window?.makeKeyAndVisible()

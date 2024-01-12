@@ -112,3 +112,5 @@ A view tem uma referencia da view model e vai observar o viewModel.
 Sempre que o viewModel notificar uma mudança a view renderiza algo.
 A viewmodel observa a camada model
 
+### Navigation Controller
+Precisamos de um Navigation Controller para conseguir navegar pelas telas

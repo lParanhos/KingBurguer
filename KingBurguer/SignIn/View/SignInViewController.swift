@@ -36,13 +36,26 @@ class SignInViewController: UIViewController {
         let btn = UIButton()
         btn.setTitle("Entrar", for: .normal)
         btn.setTitleColor(.black, for: .normal)
-        btn.backgroundColor = .yellow
+        btn.backgroundColor = .purple
         btn.translatesAutoresizingMaskIntoConstraints = false
         
         // Self é a classe que vai conter a função que será disparada
         // action: é a função a ser disparada, com o selector expomos nossa função para o objective-c
         // for: evento em que deve ser disparado
         btn.addTarget(self, action: #selector(sendDidTap), for: .touchUpInside)
+        
+        return btn
+    }()
+    
+    lazy var register: UIButton = {
+        let btn = UIButton()
+        btn.setTitle("Criar Conta", for: .normal)
+        btn.setTitleColor(.black, for: .normal)
+        btn.backgroundColor = .yellow
+        btn.translatesAutoresizingMaskIntoConstraints = false
+        
+        
+        btn.addTarget(self, action: #selector(registerDidTap), for: .touchUpInside)
         
         return btn
     }()
@@ -57,10 +70,13 @@ class SignInViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = .green
+        view.backgroundColor = .systemBackground
         view.addSubview(email)
         view.addSubview(password)
         view.addSubview(send)
+        view.addSubview(register)
+        
+        navigationItem.title = "Login"
         
         let emailConstraints = [
             // 1. coordenadas da esquerda
@@ -72,7 +88,7 @@ class SignInViewController: UIViewController {
             // 4. tamanho fixo
             email.heightAnchor.constraint(equalToConstant: 50.0)
         ]
-        NSLayoutConstraint.activate(emailConstraints)
+        
         
         let passwordConstraints = [
             password.leadingAnchor.constraint(equalTo: email.leadingAnchor),
@@ -80,7 +96,7 @@ class SignInViewController: UIViewController {
             password.topAnchor.constraint(equalTo: email.bottomAnchor, constant: 10),
             password.heightAnchor.constraint(equalToConstant: 50.0)
         ]
-        NSLayoutConstraint.activate(passwordConstraints)
+        
         
         let sendConstraints = [
             send.leadingAnchor.constraint(equalTo: view.leadingAnchor),
@@ -88,14 +104,28 @@ class SignInViewController: UIViewController {
             send.topAnchor.constraint(equalTo: password.bottomAnchor, constant: 10.0),
             send.heightAnchor.constraint(equalToConstant: 50.0)
         ]
-        NSLayoutConstraint.activate(sendConstraints)
+        let registerConstraints = [
+            register.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            register.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            register.topAnchor.constraint(equalTo: send.bottomAnchor, constant: 10.0),
+            register.heightAnchor.constraint(equalToConstant: 50.0)
+        ]
         
+        NSLayoutConstraint.activate(emailConstraints)
+        NSLayoutConstraint.activate(passwordConstraints)
+        NSLayoutConstraint.activate(sendConstraints)
+        NSLayoutConstraint.activate(registerConstraints)
 
     }
     // estrutura padrão da função
     //ao passar o _ não precisamos passar o nome da variável
     @objc func sendDidTap(_ sender: UIButton) {
         viewModel?.send()
+    }
+    
+    @objc func registerDidTap(_ sender: UIButton) {
+        let signUpVC = SignUpViewController()
+        navigationController?.pushViewController(signUpVC, animated: true)
     }
 }
 
