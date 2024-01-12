@@ -100,6 +100,8 @@ class SignInViewController: UIViewController {
 }
 
 //Maneira para separar os observadores da classe
+// Com essa estratégia deixamos a controller apenas com responsabilidades de layout
+// e eventos de touch
 extension SignInViewController: SignInViewModeDelegate {
     //observador
      func viewModelDidChange(state: SignInState) {
