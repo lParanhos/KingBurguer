@@ -12,6 +12,7 @@
 		A854280A2B483F850001DD7B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A85428092B483F850001DD7B /* Assets.xcassets */; };
 		A854280D2B483F850001DD7B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A854280B2B483F850001DD7B /* LaunchScreen.storyboard */; };
 		A85428152B4843720001DD7B /* Anotations.md in Resources */ = {isa = PBXBuildFile; fileRef = A85428142B4843720001DD7B /* Anotations.md */; };
+		A8A691E92B514530007C2F23 /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8A691E82B514530007C2F23 /* SignInViewModel.swift */; };
 		A8BCBCBB2B4EF5A4003702CB /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BCBCBA2B4EF5A4003702CB /* SignInViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -23,6 +24,7 @@
 		A854280C2B483F850001DD7B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A854280E2B483F850001DD7B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A85428142B4843720001DD7B /* Anotations.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Anotations.md; sourceTree = "<group>"; };
+		A8A691E82B514530007C2F23 /* SignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
 		A8BCBCBA2B4EF5A4003702CB /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -67,9 +69,18 @@
 			path = KingBurguer;
 			sourceTree = "<group>";
 		};
+		A8A691E72B51451E007C2F23 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				A8A691E82B514530007C2F23 /* SignInViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		A8BCBCB82B4EF570003702CB /* SignIn */ = {
 			isa = PBXGroup;
 			children = (
+				A8A691E72B51451E007C2F23 /* ViewModel */,
 				A8BCBCB92B4EF578003702CB /* View */,
 			);
 			path = SignIn;
@@ -154,6 +165,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A8A691E92B514530007C2F23 /* SignInViewModel.swift in Sources */,
 				A8BCBCBB2B4EF5A4003702CB /* SignInViewController.swift in Sources */,
 				A85428012B483F850001DD7B /* AppDelegate.swift in Sources */,
 				A85428032B483F850001DD7B /* SceneDelegate.swift in Sources */,

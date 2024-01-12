@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class SignInViewController: UIViewController {
+class SignInViewController: UIViewController, SignInViewModeDelegate {
     
     //Declara e inicializa a variavel
     let email: UITextField = {
@@ -46,6 +46,13 @@ class SignInViewController: UIViewController {
         
         return btn
     }()
+    
+    var viewModel : SignInViewModel? {
+        didSet {
+            //Delega as informações para a classe atual
+            viewModel?.delegate = self
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -88,6 +95,10 @@ class SignInViewController: UIViewController {
     // estrutura padrão da função
     //ao passar o _ não precisamos passar o nome da variável
     @objc func sendDidTap(_ sender: UIButton) {
-        print("Clicou")
+        viewModel?.send()
+    }
+    
+    func viewModelDidChange(viewMode: SignInViewModel) {
+        print("Fui notificado")
     }
 }

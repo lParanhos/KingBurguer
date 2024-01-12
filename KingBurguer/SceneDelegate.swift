@@ -20,12 +20,16 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
        
         guard let windowScene = (scene as? UIWindowScene) else { return }
+        //Passa a viewmodel para a controller
+        let viewModel  = SignInViewModel()
+        let signInVC = SignInViewController()
+        signInVC.viewModel = viewModel
         
         //Configuração inicial
         
         //Frame é a largura e altura do app
         window = UIWindow(frame: windowScene.coordinateSpace.bounds) // retorna o tamanho da janela
-        window?.rootViewController = SignInViewController()
+        window?.rootViewController = signInVC
         window?.windowScene = windowScene
         //se não colocar, não renderiza a tela
         window?.makeKeyAndVisible()
