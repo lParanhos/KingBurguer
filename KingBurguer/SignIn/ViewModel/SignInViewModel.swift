@@ -11,22 +11,28 @@ import Foundation
 // chamar essa assinatura, notifica quem a está utilizando
 
 protocol SignInViewModeDelegate {
-    func viewModelDidChange(viewMode: SignInViewModel)
+    func viewModelDidChange(state: SignInState)
 }
 
 class SignInViewModel {
     
     var delegate: SignInViewModeDelegate?
     
-    var state: Bool = false {
+    var state: SignInState = .none {
         //dispara o bloco quando a variável é alterada
         didSet {
-            delegate?.viewModelDidChange(viewMode: self)
+            //notifica quem está utilizando esse delegate, com o valor atualizado
+            delegate?.viewModelDidChange(state: state)
         }
     }
     
     
     func send() {
-        state = true
+        state = .loading
+        
+        //Timer de 2 segundos
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            self.state = .error("Usuário não existe")
+        }
     }
 }

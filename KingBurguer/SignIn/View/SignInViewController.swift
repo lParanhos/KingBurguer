@@ -98,7 +98,8 @@ class SignInViewController: UIViewController, SignInViewModeDelegate {
         viewModel?.send()
     }
     
-    func viewModelDidChange(viewMode: SignInViewModel) {
+    //observador
+     func viewModelDidChange(state: SignInState) {
         print("Fui notificado")
     }
 }

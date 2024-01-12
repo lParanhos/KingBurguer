@@ -13,6 +13,7 @@
 		A854280D2B483F850001DD7B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A854280B2B483F850001DD7B /* LaunchScreen.storyboard */; };
 		A85428152B4843720001DD7B /* Anotations.md in Resources */ = {isa = PBXBuildFile; fileRef = A85428142B4843720001DD7B /* Anotations.md */; };
 		A8A691E92B514530007C2F23 /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8A691E82B514530007C2F23 /* SignInViewModel.swift */; };
+		A8A691EB2B514979007C2F23 /* SignInState.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8A691EA2B514979007C2F23 /* SignInState.swift */; };
 		A8BCBCBB2B4EF5A4003702CB /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BCBCBA2B4EF5A4003702CB /* SignInViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -25,6 +26,7 @@
 		A854280E2B483F850001DD7B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A85428142B4843720001DD7B /* Anotations.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Anotations.md; sourceTree = "<group>"; };
 		A8A691E82B514530007C2F23 /* SignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
+		A8A691EA2B514979007C2F23 /* SignInState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInState.swift; sourceTree = "<group>"; };
 		A8BCBCBA2B4EF5A4003702CB /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -73,6 +75,7 @@
 			isa = PBXGroup;
 			children = (
 				A8A691E82B514530007C2F23 /* SignInViewModel.swift */,
+				A8A691EA2B514979007C2F23 /* SignInState.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -169,6 +172,7 @@
 				A8BCBCBB2B4EF5A4003702CB /* SignInViewController.swift in Sources */,
 				A85428012B483F850001DD7B /* AppDelegate.swift in Sources */,
 				A85428032B483F850001DD7B /* SceneDelegate.swift in Sources */,
+				A8A691EB2B514979007C2F23 /* SignInState.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
