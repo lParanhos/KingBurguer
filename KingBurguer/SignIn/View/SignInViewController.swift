@@ -124,8 +124,7 @@ class SignInViewController: UIViewController {
     }
     
     @objc func registerDidTap(_ sender: UIButton) {
-        let signUpVC = SignUpViewController()
-        navigationController?.pushViewController(signUpVC, animated: true)
+        viewModel?.goToSignUp()
     }
 }
 
@@ -134,19 +133,19 @@ class SignInViewController: UIViewController {
 // e eventos de touch
 extension SignInViewController: SignInViewModeDelegate {
     //observador
-     func viewModelDidChange(state: SignInState) {
-      switch(state) {
+    func viewModelDidChange(state: SignInState) {
+        switch(state) {
         case .none:
             break
-         case .loading:
-             break
-         case .goToHome:
-             break
-         case .error(let msg):
-             let alert = UIAlertController(title: "Titulo", message: msg, preferredStyle: .alert)
-             alert.addAction(UIAlertAction(title: "Ok", style: .default))
-             self.present(alert, animated: true)
-             break
-         }
+        case .loading:
+            break
+        case .goToHome:
+            break
+        case .error(let msg):
+            let alert = UIAlertController(title: "Titulo", message: msg, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: .default))
+            self.present(alert, animated: true)
+            break
+        }
     }
 }

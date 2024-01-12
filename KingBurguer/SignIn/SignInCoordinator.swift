@@ -20,6 +20,8 @@ class SignInCoordinator {
     func start() {
         //Passa a viewmodel para a controller
         let viewModel  = SignInViewModel()
+        viewModel.coordinator = self
+        
         let signInVC = SignInViewController()
         signInVC.viewModel = viewModel
         
@@ -31,5 +33,10 @@ class SignInCoordinator {
         window?.rootViewController = navigationController
         //se não colocar, não renderiza a tela
         window?.makeKeyAndVisible()
+    }
+    
+    func signUp() {
+        let signUpCoordinator = SignUpCoordinator(navigationController: navigationController)
+        signUpCoordinator.start()
     }
 }

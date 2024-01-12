@@ -17,6 +17,7 @@ protocol SignInViewModeDelegate {
 class SignInViewModel {
     
     var delegate: SignInViewModeDelegate?
+    var coordinator: SignInCoordinator?
     
     var state: SignInState = .none {
         //dispara o bloco quando a variável é alterada
@@ -34,6 +35,11 @@ class SignInViewModel {
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
             self.state = .error("Usuário não existe")
         }
+    }
+    
+    
+    func goToSignUp() {
+        coordinator?.signUp()
     }
 }
 
