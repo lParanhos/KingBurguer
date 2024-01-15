@@ -16,7 +16,11 @@ class SignUpCoordinator {
     }
     
     func start() {
+        let viewModel = SignUpViewModel()
+        viewModel.coordinator = self
+        
         let signUpVC = SignUpViewController()
+        signUpVC.viewModel = viewModel
         
         navigationController.pushViewController(signUpVC, animated: true)
     }

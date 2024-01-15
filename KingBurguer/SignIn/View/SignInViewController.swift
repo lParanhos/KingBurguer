@@ -84,7 +84,7 @@ class SignInViewController: UIViewController {
             // 2. coordenadas da direita
             email.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             // 3. coordenadas do centro Y
-            email.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            email.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -100.0),
             // 4. tamanho fixo
             email.heightAnchor.constraint(equalToConstant: 50.0)
         ]
