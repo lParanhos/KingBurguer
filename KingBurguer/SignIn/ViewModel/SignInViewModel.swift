@@ -27,19 +27,21 @@ class SignInViewModel {
         }
     }
     
-    
     func send() {
         state = .loading
         
         //Timer de 2 segundos
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            self.state = .error("Usuário não existe")
+            self.state = .goToHome
         }
     }
     
-    
     func goToSignUp() {
         coordinator?.signUp()
+    }
+    
+    func goToHome() {
+        coordinator?.goToHome()
     }
 }
 

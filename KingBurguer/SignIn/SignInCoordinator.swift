@@ -39,4 +39,9 @@ class SignInCoordinator {
         let signUpCoordinator = SignUpCoordinator(navigationController: navigationController)
         signUpCoordinator.start()
     }
+    
+    func goToHome() {
+        let homeCoordinator = HomeCoordinator(window: window)
+        homeCoordinator.start()
+    }
 }

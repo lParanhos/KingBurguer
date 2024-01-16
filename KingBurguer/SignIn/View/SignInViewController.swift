@@ -140,6 +140,7 @@ extension SignInViewController: SignInViewModeDelegate {
         case .loading:
             break
         case .goToHome:
+            viewModel?.goToHome()
             break
         case .error(let msg):
             let alert = UIAlertController(title: "Titulo", message: msg, preferredStyle: .alert)
