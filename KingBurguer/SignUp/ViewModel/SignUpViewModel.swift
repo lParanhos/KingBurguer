@@ -30,8 +30,12 @@ class SignUpViewModel {
         
         //Timer de 2 segundos
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            self.state = .error("Erro interno")
+            self.state = .goToHome
         }
+    }
+    
+    func goToHome() {
+        coordinator?.home()
     }
     
 }

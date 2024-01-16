@@ -41,7 +41,7 @@ class SignInViewModel {
     }
     
     func goToHome() {
-        coordinator?.goToHome()
+        coordinator?.home()
     }
 }
 
