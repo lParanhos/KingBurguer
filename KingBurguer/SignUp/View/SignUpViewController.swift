@@ -136,6 +136,16 @@ class SignUpViewController: UIViewController {
 
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        view.addGestureRecognizer(tap)
+    }
+    
+    @objc func dismissKeyboard(_ view: UITapGestureRecognizer){
+        self.view.endEditing(true)
+    }
+    
     @objc func sendDidTap(_ sender: UIButton) {
         viewModel?.send()
     }

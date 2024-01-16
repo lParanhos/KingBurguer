@@ -67,6 +67,7 @@ class SignInViewController: UIViewController {
         }
     }
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -117,6 +118,19 @@ class SignInViewController: UIViewController {
         NSLayoutConstraint.activate(registerConstraints)
 
     }
+    
+    //Quando a view apareceu
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        //Escuta evento de touch
+        view.addGestureRecognizer(tap)
+    }
+    
+    @objc func dismissKeyboard(_ view: UITapGestureRecognizer){
+        self.view.endEditing(true)
+    }
+    
     // estrutura padrão da função
     //ao passar o _ não precisamos passar o nome da variável
     @objc func sendDidTap(_ sender: UIButton) {
