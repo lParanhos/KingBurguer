@@ -10,6 +10,19 @@ import UIKit
 
 class SignInViewController: UIViewController {
     
+    let scroll: UIScrollView = {
+        let sc = UIScrollView()
+        sc.translatesAutoresizingMaskIntoConstraints = false
+        return sc
+    }()
+    
+    let container: UIView = {
+        let v = UIView()
+        v.backgroundColor = .purple
+        v.translatesAutoresizingMaskIntoConstraints = false
+        return v
+    }()
+    
     //Declara e inicializa a variavel
     lazy var email: UITextField = {
         let ed = UITextField()
@@ -75,20 +88,39 @@ class SignInViewController: UIViewController {
         super.viewDidLoad()
         
         view.backgroundColor = .systemBackground
-        view.addSubview(email)
-        view.addSubview(password)
-        view.addSubview(send)
-        view.addSubview(register)
+        container.addSubview(email)
+        container.addSubview(password)
+        container.addSubview(send)
+        container.addSubview(register)
+        
+        scroll.addSubview(container)
+        view.addSubview(scroll)
         
         navigationItem.title = "Login"
         
+        let scrollContraints = [
+            scroll.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            scroll.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            scroll.topAnchor.constraint(equalTo: view.topAnchor),
+            scroll.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+        ]
+        
+        let containerCosntraints = [
+            container.widthAnchor.constraint(equalTo: view.widthAnchor),
+            container.topAnchor.constraint(equalTo: scroll.topAnchor),
+            container.leadingAnchor.constraint(equalTo: scroll.leadingAnchor),
+            container.trailingAnchor.constraint(equalTo: scroll.trailingAnchor),
+            container.bottomAnchor.constraint(equalTo: scroll.bottomAnchor),
+            container.heightAnchor.constraint(equalToConstant: 490)
+        ]
+        
         let emailConstraints = [
             // 1. coordenadas da esquerda
-            email.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            email.leadingAnchor.constraint(equalTo: container.leadingAnchor),
             // 2. coordenadas da direita
-            email.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            email.trailingAnchor.constraint(equalTo: container.trailingAnchor),
             // 3. coordenadas do centro Y
-            email.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -100.0),
+            email.centerYAnchor.constraint(equalTo: container.centerYAnchor, constant: -150.0),
             // 4. tamanho fixo
             email.heightAnchor.constraint(equalToConstant: 50.0)
         ]
@@ -103,18 +135,21 @@ class SignInViewController: UIViewController {
         
         
         let sendConstraints = [
-            send.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            send.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            send.leadingAnchor.constraint(equalTo: container.leadingAnchor),
+            send.trailingAnchor.constraint(equalTo: container.trailingAnchor),
             send.topAnchor.constraint(equalTo: password.bottomAnchor, constant: 10.0),
             send.heightAnchor.constraint(equalToConstant: 50.0)
         ]
+        
         let registerConstraints = [
-            register.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            register.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            register.leadingAnchor.constraint(equalTo: container.leadingAnchor),
+            register.trailingAnchor.constraint(equalTo: container.trailingAnchor),
             register.topAnchor.constraint(equalTo: send.bottomAnchor, constant: 10.0),
             register.heightAnchor.constraint(equalToConstant: 50.0)
         ]
         
+        NSLayoutConstraint.activate(scrollContraints)
+        NSLayoutConstraint.activate(containerCosntraints)
         NSLayoutConstraint.activate(emailConstraints)
         NSLayoutConstraint.activate(passwordConstraints)
         NSLayoutConstraint.activate(sendConstraints)

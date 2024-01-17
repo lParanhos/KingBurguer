@@ -22,8 +22,8 @@ class SignInCoordinator {
         let viewModel  = SignInViewModel()
         viewModel.coordinator = self
         
-        let signInVC = _SignInViewController()
-        //signInVC.viewModel = viewModel
+        let signInVC = SignInViewController()
+        signInVC.viewModel = viewModel
         
         //configura a NC
         // = a rootViewController
