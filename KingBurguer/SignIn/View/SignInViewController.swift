@@ -18,7 +18,6 @@ class SignInViewController: UIViewController {
     
     let container: UIView = {
         let v = UIView()
-        v.backgroundColor = .purple
         v.translatesAutoresizingMaskIntoConstraints = false
         return v
     }()
@@ -26,7 +25,7 @@ class SignInViewController: UIViewController {
     //Declara e inicializa a variavel
     lazy var email: UITextField = {
         let ed = UITextField()
-        ed.backgroundColor = .blue
+        ed.borderStyle = .roundedRect
         ed.placeholder = "Entre com seu e-mail"
         ed.returnKeyType = .next
         //delega os eventos para essa viewController
@@ -38,7 +37,7 @@ class SignInViewController: UIViewController {
     
     lazy var password: UITextField = {
         let ed = UITextField()
-        ed.backgroundColor = .red
+        ed.borderStyle = .roundedRect
         ed.placeholder = "Entre com sua senha"
         ed.returnKeyType = .done
         ed.delegate = self
@@ -48,29 +47,20 @@ class SignInViewController: UIViewController {
     //Lazy var inicializa o objeto quando invocamos ele
     //Precisamos usar a lazy, pois ao passar o self (SignViewController) a mesma ainda não foi criada
     // Antes o send era criado e depois e a ViewController, com a lazy é o inverso
-    lazy var send: UIButton = {
-        let btn = UIButton()
-        btn.setTitle("Entrar", for: .normal)
-        btn.setTitleColor(.black, for: .normal)
-        btn.backgroundColor = .purple
-        btn.translatesAutoresizingMaskIntoConstraints = false
-        
-        // Self é a classe que vai conter a função que será disparada
-        // action: é a função a ser disparada, com o selector expomos nossa função para o objective-c
-        // for: evento em que deve ser disparado
-        btn.addTarget(self, action: #selector(sendDidTap), for: .touchUpInside)
-        
+    lazy var send: LoadingButton = {
+        let btn = LoadingButton()
+        btn.title = "Entrar"
+        btn.titleColor = .white
+        btn.backgroundColor = .red
+        btn.addTarget(self, action: #selector(sendDidTap))
         return btn
     }()
     
     lazy var register: UIButton = {
         let btn = UIButton()
         btn.setTitle("Criar Conta", for: .normal)
-        btn.setTitleColor(.black, for: .normal)
-        btn.backgroundColor = .yellow
+        btn.setTitleColor(.label, for: .normal)
         btn.translatesAutoresizingMaskIntoConstraints = false
-        
-        
         btn.addTarget(self, action: #selector(registerDidTap), for: .touchUpInside)
         
         return btn
@@ -190,6 +180,7 @@ extension SignInViewController: SignInViewModeDelegate {
         case .none:
             break
         case .loading:
+            send.startLoading(true)
             break
         case .goToHome:
             viewModel?.goToHome()

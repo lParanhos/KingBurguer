@@ -12,7 +12,7 @@ class SignUpViewController: UIViewController {
     
     let name: UITextField = {
         let ed = UITextField()
-        ed.backgroundColor = .green
+        ed.borderStyle = .roundedRect
         ed.placeholder = "Entre com seu nome"
         ed.translatesAutoresizingMaskIntoConstraints = false
         return ed
@@ -20,7 +20,7 @@ class SignUpViewController: UIViewController {
     
     let email: UITextField = {
         let ed = UITextField()
-        ed.backgroundColor = .green
+        ed.borderStyle = .roundedRect
         ed.placeholder = "Entre com seu email"
         ed.translatesAutoresizingMaskIntoConstraints = false
         return ed
@@ -28,7 +28,7 @@ class SignUpViewController: UIViewController {
     
     let password: UITextField = {
         let ed = UITextField()
-        ed.backgroundColor = .green
+        ed.borderStyle = .roundedRect
         ed.placeholder = "Entre com sua senha"
         ed.translatesAutoresizingMaskIntoConstraints = false
         return ed
@@ -36,7 +36,7 @@ class SignUpViewController: UIViewController {
     
     let document: UITextField = {
         let ed = UITextField()
-        ed.backgroundColor = .green
+        ed.borderStyle = .roundedRect
         ed.placeholder = "Entre com seu CPF"
         ed.translatesAutoresizingMaskIntoConstraints = false
         return ed
@@ -44,25 +44,19 @@ class SignUpViewController: UIViewController {
     
     let birthday: UITextField = {
         let ed = UITextField()
-        ed.backgroundColor = .green
+        ed.borderStyle = .roundedRect
         ed.placeholder = "Entre com sua data de nascimento"
         ed.translatesAutoresizingMaskIntoConstraints = false
         return ed
     }()
     
     
-    lazy var send: UIButton = {
-        let btn = UIButton()
-        btn.setTitle("Entrar", for: .normal)
-        btn.setTitleColor(.black, for: .normal)
-        btn.backgroundColor = .purple
-        btn.translatesAutoresizingMaskIntoConstraints = false
-        
-        // Self é a classe que vai conter a função que será disparada
-        // action: é a função a ser disparada, com o selector expomos nossa função para o objective-c
-        // for: evento em que deve ser disparado
-        btn.addTarget(self, action: #selector(sendDidTap), for: .touchUpInside)
-        
+    lazy var send: LoadingButton = {
+        let btn = LoadingButton()
+        btn.title = "Entrar"
+        btn.titleColor = .white
+        btn.backgroundColor = .red
+        btn.addTarget(self, action: #selector(sendDidTap))
         return btn
     }()
     
