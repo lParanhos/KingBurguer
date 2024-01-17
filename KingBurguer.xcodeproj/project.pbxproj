@@ -23,6 +23,7 @@
 		A8FB2D0A2B569025000E6F07 /* HomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8FB2D092B569025000E6F07 /* HomeCoordinator.swift */; };
 		A8FB2D0C2B569045000E6F07 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8FB2D0B2B569045000E6F07 /* HomeViewController.swift */; };
 		A8FB2D0E2B56908D000E6F07 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8FB2D0D2B56908D000E6F07 /* HomeViewModel.swift */; };
+		A8FB2D102B56A647000E6F07 /* _SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8FB2D0F2B56A647000E6F07 /* _SignInViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +45,7 @@
 		A8FB2D092B569025000E6F07 /* HomeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCoordinator.swift; sourceTree = "<group>"; };
 		A8FB2D0B2B569045000E6F07 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		A8FB2D0D2B56908D000E6F07 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		A8FB2D0F2B56A647000E6F07 /* _SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = _SignInViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -139,6 +141,7 @@
 			isa = PBXGroup;
 			children = (
 				A8BCBCBA2B4EF5A4003702CB /* SignInViewController.swift */,
+				A8FB2D0F2B56A647000E6F07 /* _SignInViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -246,6 +249,7 @@
 				A8BCBCBB2B4EF5A4003702CB /* SignInViewController.swift in Sources */,
 				A85428012B483F850001DD7B /* AppDelegate.swift in Sources */,
 				A85A18842B55CCB2004D0B06 /* SignUpViewModel.swift in Sources */,
+				A8FB2D102B56A647000E6F07 /* _SignInViewController.swift in Sources */,
 				A8A691F32B5159F8007C2F23 /* SignUpCoordinator.swift in Sources */,
 				A8A691F12B515688007C2F23 /* SignInCoordinator.swift in Sources */,
 				A8FB2D0E2B56908D000E6F07 /* HomeViewModel.swift in Sources */,
