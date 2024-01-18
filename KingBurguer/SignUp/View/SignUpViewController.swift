@@ -10,42 +10,69 @@ import UIKit
 
 class SignUpViewController: UIViewController {
     
-    let name: UITextField = {
+    let scroll: UIScrollView = {
+        let sc = UIScrollView()
+        sc.translatesAutoresizingMaskIntoConstraints = false
+        return sc
+    }()
+    
+    let container: UIView = {
+        let v = UIView()
+        v.translatesAutoresizingMaskIntoConstraints = false
+        return v
+    }()
+    
+    
+    lazy var name: UITextField = {
         let ed = UITextField()
         ed.borderStyle = .roundedRect
         ed.placeholder = "Entre com seu nome"
+        ed.returnKeyType = .next
+        ed.delegate = self
         ed.translatesAutoresizingMaskIntoConstraints = false
         return ed
     }()
     
-    let email: UITextField = {
+    lazy var email: UITextField = {
         let ed = UITextField()
         ed.borderStyle = .roundedRect
         ed.placeholder = "Entre com seu email"
+        ed.tag = 1
+        ed.returnKeyType = .next
+        ed.delegate = self
         ed.translatesAutoresizingMaskIntoConstraints = false
         return ed
     }()
     
-    let password: UITextField = {
+    lazy var password: UITextField = {
         let ed = UITextField()
         ed.borderStyle = .roundedRect
         ed.placeholder = "Entre com sua senha"
+        ed.tag = 2
+        ed.returnKeyType = .next
+        ed.delegate = self
         ed.translatesAutoresizingMaskIntoConstraints = false
         return ed
     }()
     
-    let document: UITextField = {
+    lazy var document: UITextField = {
         let ed = UITextField()
         ed.borderStyle = .roundedRect
         ed.placeholder = "Entre com seu CPF"
+        ed.tag = 3
+        ed.returnKeyType = .next
+        ed.delegate = self
         ed.translatesAutoresizingMaskIntoConstraints = false
         return ed
     }()
     
-    let birthday: UITextField = {
+    lazy var birthday: UITextField = {
         let ed = UITextField()
         ed.borderStyle = .roundedRect
         ed.placeholder = "Entre com sua data de nascimento"
+        ed.tag = 4
+        ed.returnKeyType = .done
+        ed.delegate = self
         ed.translatesAutoresizingMaskIntoConstraints = false
         return ed
     }()
@@ -72,17 +99,36 @@ class SignUpViewController: UIViewController {
         view.backgroundColor = .systemBackground
         
         
-        view.addSubview(name)
-        view.addSubview(email)
-        view.addSubview(password)
-        view.addSubview(document)
-        view.addSubview(birthday)
-        view.addSubview(send)
+        container.addSubview(name)
+        container.addSubview(email)
+        container.addSubview(password)
+        container.addSubview(document)
+        container.addSubview(birthday)
+        container.addSubview(send)
+        scroll.addSubview(container)
+        view.addSubview(scroll)
+        
+        let scrollContraints = [
+            scroll.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            scroll.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            scroll.topAnchor.constraint(equalTo: view.topAnchor),
+            scroll.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+        ]
+        
+        let containerCosntraints = [
+            container.widthAnchor.constraint(equalTo: view.widthAnchor),
+            container.topAnchor.constraint(equalTo: scroll.topAnchor),
+            container.leadingAnchor.constraint(equalTo: scroll.leadingAnchor),
+            container.trailingAnchor.constraint(equalTo: scroll.trailingAnchor),
+            container.bottomAnchor.constraint(equalTo: scroll.bottomAnchor),
+            container.heightAnchor.constraint(equalToConstant: 490)
+        ]
+        
         
         let nameConstraints = [
-            name.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            name.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            name.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -100.0),
+            name.leadingAnchor.constraint(equalTo: container.leadingAnchor),
+            name.trailingAnchor.constraint(equalTo: container.trailingAnchor),
+            name.topAnchor.constraint(equalTo: container.topAnchor),
             name.heightAnchor.constraint(equalToConstant: 50.0)
         ]
         
@@ -127,7 +173,38 @@ class SignUpViewController: UIViewController {
         NSLayoutConstraint.activate(birthdayConstraints)
         NSLayoutConstraint.activate(documentConstraints)
         NSLayoutConstraint.activate(sendConstraints)
+        NSLayoutConstraint.activate(scrollContraints)
+        NSLayoutConstraint.activate(containerCosntraints)
+        
+        
+        //Observador de teclado
+        NotificationCenter.default.addObserver(self, selector: #selector(onKeyboardNotification), name: UIResponder.keyboardWillHideNotification, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(onKeyboardNotification), name: UIResponder.keyboardWillShowNotification, object: nil)
 
+    }
+    
+    @objc func onKeyboardNotification(_ notification: Notification) {
+        let visible = notification.name == UIResponder.keyboardWillShowNotification
+        
+        let keyboardFrame = visible
+        ? UIResponder.keyboardFrameEndUserInfoKey
+        : UIResponder.keyboardFrameBeginUserInfoKey
+        
+        if let keyboardSize = (notification.userInfo?[keyboardFrame] as? NSValue)?.cgRectValue {
+            onKeyboardChanged(visible, height: keyboardSize.height)
+        }
+    }
+    
+    func onKeyboardChanged(_ visible: Bool, height: CGFloat) {
+        if(!visible) {
+            scroll.contentInset = .zero
+            scroll.scrollIndicatorInsets = .zero
+        } else {
+            let contentInsets = UIEdgeInsets(top: 0.0, left: 0.0, bottom: height, right: 0.0)
+            scroll.contentInset = contentInsets
+            scroll.scrollIndicatorInsets = contentInsets
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -161,5 +238,35 @@ extension SignUpViewController: SignUpViewModeDelegate {
             self.present(alert, animated: true)
             break
         }
+    }
+}
+
+extension SignUpViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if (textField.returnKeyType == .done) {
+            view.endEditing(true)
+            return false
+        }
+        
+        let nextTag = textField.tag + 1
+        let component = container.findViewByTag(tag: nextTag)
+        
+        if component != nil {
+            component?.becomeFirstResponder()
+        } else {
+            view.endEditing(true)
+        }
+        return false
+    }
+}
+
+extension UIView {
+    func findViewByTag(tag: Int) -> UIView? {
+        for subview in subviews {
+            if subview.tag == tag{
+                return subview
+            }
+        }
+        return nil
     }
 }
