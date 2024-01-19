@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A84865D32B59F04900FEFC7E /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84865D22B59F04900FEFC7E /* FeedViewController.swift */; };
+		A84865D52B59F05A00FEFC7E /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84865D42B59F05A00FEFC7E /* ProfileViewController.swift */; };
+		A84865D72B59F06F00FEFC7E /* CouponViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84865D62B59F06F00FEFC7E /* CouponViewController.swift */; };
 		A85428012B483F850001DD7B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A85428002B483F850001DD7B /* AppDelegate.swift */; };
 		A85428032B483F850001DD7B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A85428022B483F850001DD7B /* SceneDelegate.swift */; };
 		A854280A2B483F850001DD7B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A85428092B483F850001DD7B /* Assets.xcassets */; };
@@ -28,6 +31,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A84865D22B59F04900FEFC7E /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
+		A84865D42B59F05A00FEFC7E /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		A84865D62B59F06F00FEFC7E /* CouponViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CouponViewController.swift; sourceTree = "<group>"; };
 		A85427FD2B483F850001DD7B /* KingBurguer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KingBurguer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A85428002B483F850001DD7B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A85428022B483F850001DD7B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -61,6 +67,78 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A84865C92B59EFD600FEFC7E /* Feed */ = {
+			isa = PBXGroup;
+			children = (
+				A84865CE2B59EFF900FEFC7E /* ViewModel */,
+				A84865CA2B59EFDD00FEFC7E /* View */,
+			);
+			path = Feed;
+			sourceTree = "<group>";
+		};
+		A84865CA2B59EFDD00FEFC7E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A84865D22B59F04900FEFC7E /* FeedViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		A84865CB2B59EFE600FEFC7E /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				A84865CD2B59EFF100FEFC7E /* ViewModel */,
+				A84865CC2B59EFEC00FEFC7E /* View */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		A84865CC2B59EFEC00FEFC7E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A84865D42B59F05A00FEFC7E /* ProfileViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		A84865CD2B59EFF100FEFC7E /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		A84865CE2B59EFF900FEFC7E /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		A84865CF2B59F00800FEFC7E /* Coupon */ = {
+			isa = PBXGroup;
+			children = (
+				A84865D12B59F01400FEFC7E /* ViewModel */,
+				A84865D02B59F01000FEFC7E /* View */,
+			);
+			path = Coupon;
+			sourceTree = "<group>";
+		};
+		A84865D02B59F01000FEFC7E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A84865D62B59F06F00FEFC7E /* CouponViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		A84865D12B59F01400FEFC7E /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		A85427F42B483F840001DD7B = {
 			isa = PBXGroup;
 			children = (
@@ -80,6 +158,9 @@
 		A85427FF2B483F850001DD7B /* KingBurguer */ = {
 			isa = PBXGroup;
 			children = (
+				A84865CF2B59F00800FEFC7E /* Coupon */,
+				A84865CB2B59EFE600FEFC7E /* Profile */,
+				A84865C92B59EFD600FEFC7E /* Feed */,
 				A867F1CB2B57FA3C00B4CFD3 /* Commom */,
 				A8FB2D062B568FFC000E6F07 /* Home */,
 				A8A691EC2B5151DC007C2F23 /* SignUp */,
@@ -264,10 +345,13 @@
 			files = (
 				A8A691EF2B5151F7007C2F23 /* SignUpViewController.swift in Sources */,
 				A8A691E92B514530007C2F23 /* SignInViewModel.swift in Sources */,
+				A84865D72B59F06F00FEFC7E /* CouponViewController.swift in Sources */,
 				A85A18862B55CD74004D0B06 /* SigUpState.swift in Sources */,
 				A8BCBCBB2B4EF5A4003702CB /* SignInViewController.swift in Sources */,
 				A85428012B483F850001DD7B /* AppDelegate.swift in Sources */,
 				A85A18842B55CCB2004D0B06 /* SignUpViewModel.swift in Sources */,
+				A84865D32B59F04900FEFC7E /* FeedViewController.swift in Sources */,
+				A84865D52B59F05A00FEFC7E /* ProfileViewController.swift in Sources */,
 				A8FB2D102B56A647000E6F07 /* _SignInViewController.swift in Sources */,
 				A8A691F32B5159F8007C2F23 /* SignUpCoordinator.swift in Sources */,
 				A8A691F12B515688007C2F23 /* SignInCoordinator.swift in Sources */,

@@ -128,7 +128,7 @@ class SignUpViewController: UIViewController {
         let nameConstraints = [
             name.leadingAnchor.constraint(equalTo: container.leadingAnchor),
             name.trailingAnchor.constraint(equalTo: container.trailingAnchor),
-            name.topAnchor.constraint(equalTo: container.topAnchor),
+            name.topAnchor.constraint(equalTo: container.topAnchor, constant: 70.0),
             name.heightAnchor.constraint(equalToConstant: 50.0)
         ]
         
