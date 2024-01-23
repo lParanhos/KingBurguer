@@ -15,7 +15,7 @@ class FeedViewController: UIViewController {
     
     private let homeFeedTable: UITableView={
         let tv = UITableView()
-        tv.register(UITableViewCell.self, forCellReuseIdentifier: "cellid")
+        tv.register(FeedTableViewCell.self, forCellReuseIdentifier: FeedTableViewCell.identifier)
         tv.backgroundColor = .cyan
         return tv
     }()
@@ -44,7 +44,12 @@ extension FeedViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         //pegamos a celula que criamos e utilizamos
         //o iPhone reutiliza celulas para salvar a memoria
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cellid", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: FeedTableViewCell.identifier, for: indexPath) as! FeedTableViewCell
+        //Como o dequeue sempre retorna a classe pai UIViewCell precisamos fazer esse
+        // cast para o tipo dela se torne o tipo da classe que criamos
+        //usamos o as! quando sabemos que o tipo que criamos tem compatibilidade
+        
+        
         cell.textLabel?.text = "Olá mundo \(indexPath.row)"
         
         return cell

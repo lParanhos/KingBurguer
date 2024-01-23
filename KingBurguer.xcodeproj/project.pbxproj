@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A80A61522B5FD53D00E70A50 /* FeedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A80A61512B5FD53D00E70A50 /* FeedTableViewCell.swift */; };
 		A84865D32B59F04900FEFC7E /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84865D22B59F04900FEFC7E /* FeedViewController.swift */; };
 		A84865D52B59F05A00FEFC7E /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84865D42B59F05A00FEFC7E /* ProfileViewController.swift */; };
 		A84865D72B59F06F00FEFC7E /* CouponViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84865D62B59F06F00FEFC7E /* CouponViewController.swift */; };
@@ -31,6 +32,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A80A61512B5FD53D00E70A50 /* FeedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedTableViewCell.swift; sourceTree = "<group>"; };
 		A84865D22B59F04900FEFC7E /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
 		A84865D42B59F05A00FEFC7E /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		A84865D62B59F06F00FEFC7E /* CouponViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CouponViewController.swift; sourceTree = "<group>"; };
@@ -80,6 +82,7 @@
 			isa = PBXGroup;
 			children = (
 				A84865D22B59F04900FEFC7E /* FeedViewController.swift */,
+				A80A61512B5FD53D00E70A50 /* FeedTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -345,6 +348,7 @@
 			files = (
 				A8A691EF2B5151F7007C2F23 /* SignUpViewController.swift in Sources */,
 				A8A691E92B514530007C2F23 /* SignInViewModel.swift in Sources */,
+				A80A61522B5FD53D00E70A50 /* FeedTableViewCell.swift in Sources */,
 				A84865D72B59F06F00FEFC7E /* CouponViewController.swift in Sources */,
 				A85A18862B55CD74004D0B06 /* SigUpState.swift in Sources */,
 				A8BCBCBB2B4EF5A4003702CB /* SignInViewController.swift in Sources */,
