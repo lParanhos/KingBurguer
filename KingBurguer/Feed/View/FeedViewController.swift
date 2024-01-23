@@ -14,7 +14,7 @@ class FeedViewController: UIViewController {
     //3. numberOfRowsInSection | cellForRowAt
     
     private let homeFeedTable: UITableView={
-        let tv = UITableView()
+        let tv = UITableView(frame: .zero, style: .grouped)
         tv.register(FeedTableViewCell.self, forCellReuseIdentifier: FeedTableViewCell.identifier)
         tv.backgroundColor = .cyan
         return tv
@@ -25,7 +25,8 @@ class FeedViewController: UIViewController {
         view.backgroundColor = .systemBackground
         
         view.addSubview(homeFeedTable)
-        
+        //precisamos do delegate para modificar propriedades da table
+        homeFeedTable.delegate = self
         homeFeedTable.dataSource = self
     }
 
@@ -35,10 +36,18 @@ class FeedViewController: UIViewController {
     }
 }
 
-extension FeedViewController: UITableViewDataSource {
-    //Numero de linhas
+extension FeedViewController: UITableViewDataSource, UITableViewDelegate {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        20
+    }
+    
+    //Numero de linhas na seção
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 30
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 200
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -50,7 +59,7 @@ extension FeedViewController: UITableViewDataSource {
         //usamos o as! quando sabemos que o tipo que criamos tem compatibilidade
         
         
-        cell.textLabel?.text = "Olá mundo \(indexPath.row)"
+        cell.textLabel?.text = "Olá mundo \(indexPath.section) \(indexPath.row)"
         
         return cell
     }
