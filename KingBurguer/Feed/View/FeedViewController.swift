@@ -16,7 +16,7 @@ class FeedViewController: UIViewController {
     private let homeFeedTable: UITableView={
         let tv = UITableView(frame: .zero, style: .grouped)
         tv.register(FeedTableViewCell.self, forCellReuseIdentifier: FeedTableViewCell.identifier)
-        tv.backgroundColor = .cyan
+        tv.backgroundColor = .systemBackground
         return tv
     }()
 
@@ -33,11 +33,35 @@ class FeedViewController: UIViewController {
         //precisamos do delegate para modificar propriedades da table
         homeFeedTable.delegate = self
         homeFeedTable.dataSource = self
+        
+        configureNavBar()
     }
 
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         homeFeedTable.frame = view.bounds
+    }
+    
+    private func configureNavBar() {
+        //Precisamos que o container seja um navigation controller
+        navigationItem.title = "Produto"
+        //recurso de "animação" do title da navbar
+        navigationController?.navigationBar.prefersLargeTitles = false
+        
+        var image = UIImage(named: "icon")
+        image = image?.withRenderingMode(.alwaysOriginal)
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: image, style: .done, target: self, action: nil)
+        
+        navigationItem.rightBarButtonItems = [
+            UIBarButtonItem(image: UIImage(systemName: "power"), style: .done, target: self, action: #selector(testDidTap)),
+            UIBarButtonItem(image: UIImage(systemName: "person"), style: .done, target: self, action: nil)
+        ]
+        //muda as cores dos icones da navigation bar
+        navigationController?.navigationBar.tintColor = UIColor.red
+    }
+    
+    @objc func testDidTap(_ sender: UIBarButtonItem){
+        print("Clicou")
     }
 }
 
