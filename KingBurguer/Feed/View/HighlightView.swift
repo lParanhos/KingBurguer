@@ -22,6 +22,7 @@ class HighlightView: UIView {
         btn.setTitle("Resgatar Cupom", for: .normal)
         btn.layer.borderColor = UIColor.systemBackground.cgColor
         btn.layer.borderWidth = 1
+        btn.layer.cornerRadius = 5
         btn.translatesAutoresizingMaskIntoConstraints = false
         //Permite adicionar paddings
         btn.contentEdgeInsets = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
