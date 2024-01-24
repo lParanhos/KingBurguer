@@ -17,7 +17,7 @@ class FeedTableViewCell: UITableViewCell {
         layout.itemSize = CGSize(width: 140, height: 180)
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
         cv.backgroundColor = .blue
-        cv.register(UICollectionView.self, forCellWithReuseIdentifier: "cell")
+        cv.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "cell")
         
         return cv
     }()
