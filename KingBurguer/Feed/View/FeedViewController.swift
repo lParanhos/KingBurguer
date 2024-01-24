@@ -25,6 +25,11 @@ class FeedViewController: UIViewController {
         view.backgroundColor = .systemBackground
         
         view.addSubview(homeFeedTable)
+        let headerView = HighlightView(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: 300))
+        headerView.backgroundColor = .orange
+        homeFeedTable.tableHeaderView = headerView
+        
+        
         //precisamos do delegate para modificar propriedades da table
         homeFeedTable.delegate = self
         homeFeedTable.dataSource = self
