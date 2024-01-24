@@ -21,9 +21,7 @@ class HomeCoordinator {
     
     func start() {
         let homeVC = HomeViewController()
-        navigationController.pushViewController(homeVC, animated: true)
         
-        // aqui é onde acontece a troca de navigation controller
-        window?.rootViewController = navigationController
+        window?.rootViewController = homeVC
     }
 }
