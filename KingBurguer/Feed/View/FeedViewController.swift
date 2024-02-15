@@ -9,6 +9,8 @@ import UIKit
 
 class FeedViewController: UIViewController {
     
+    let sections = ["Mais Vendidos", "Vegano", "Bovinos", "Sobremesas"]
+    
     //1. registrar uma classe que seja UITableViewCell
     //2. definir o datasource (viewcontroller)
     //3. numberOfRowsInSection | cellForRowAt
@@ -67,7 +69,7 @@ class FeedViewController: UIViewController {
 
 extension FeedViewController: UITableViewDataSource, UITableViewDelegate {
     func numberOfSections(in tableView: UITableView) -> Int {
-        20
+        return sections.count
     }
     
     //Numero de linhas na seção
@@ -77,6 +79,31 @@ extension FeedViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 200
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        40
+    }
+    /* func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        //Só usamos a variavel quando conseguimos usar o valor opcional
+        guard let header = view as? UITableViewHeaderFooterView else {return}
+        
+        //Nesse exato momento eu tenho o UITableViewHeaderFooterView efetivamente
+        header.textLabel?.font = UIFont.systemFont(ofSize: 14, weight: .semibold)
+        header.textLabel?.frame = CGRect(x: header.bounds.origin.x + 20, y: header.bounds.origin.y, width: 120, height: header.bounds.height)
+        header.textLabel?.textColor = .label
+    } */
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let view = UIView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.width, height: 40))
+        let label = UILabel(frame: CGRect(x: 20, y: 0, width: tableView.bounds.width, height: 40))
+        label.font = UIFont.systemFont(ofSize: 14, weight: .semibold)
+        label.textColor = .label
+        label.text = sections[section].uppercased()
+        
+        view.addSubview(label)
+        
+        return view
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
