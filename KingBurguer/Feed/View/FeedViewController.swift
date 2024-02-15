@@ -115,7 +115,7 @@ extension FeedViewController: UITableViewDataSource, UITableViewDelegate {
         //usamos o as! quando sabemos que o tipo que criamos tem compatibilidade
         
         
-        cell.textLabel?.text = "Olá mundo \(indexPath.section) \(indexPath.row)"
+        //cell.textLabel?.text = "Olá mundo \(indexPath.section) \(indexPath.row)"
         
         return cell
     }
