@@ -23,15 +23,16 @@ class SignInViewController: UIViewController {
     }()
     
     //Declara e inicializa a variavel
-    lazy var email: UITextField = {
-        let ed = UITextField()
-        ed.borderStyle = .roundedRect
-        ed.placeholder = "Entre com seu e-mail"
-        ed.returnKeyType = .next
+    lazy var email: TextField = {
+        let ed = TextField()
+      //  ed.borderStyle = .roundedRect
+       ed.placeholder = "Entre com seu e-mail"
+       ed.returnKeyType = .next
+       ed.error = "E-mail inválido"
         //delega os eventos para essa viewController
-        ed.delegate = self
+    //    ed.delegate = self
         //Necessário desabilitar sempre, para utilizar o auto layout
-        ed.translatesAutoresizingMaskIntoConstraints = false
+      //  ed.translatesAutoresizingMaskIntoConstraints = false
         return ed
     }()
     
@@ -106,13 +107,11 @@ class SignInViewController: UIViewController {
         
         let emailConstraints = [
             // 1. coordenadas da esquerda
-            email.leadingAnchor.constraint(equalTo: container.leadingAnchor),
+            email.leadingAnchor.constraint(equalTo: container.leadingAnchor, constant: 10),
             // 2. coordenadas da direita
-            email.trailingAnchor.constraint(equalTo: container.trailingAnchor),
+            email.trailingAnchor.constraint(equalTo: container.trailingAnchor, constant: -10),
             // 3. coordenadas do centro Y
-            email.centerYAnchor.constraint(equalTo: container.centerYAnchor, constant: -150.0),
-            // 4. tamanho fixo
-            email.heightAnchor.constraint(equalToConstant: 50.0)
+            email.centerYAnchor.constraint(equalTo: container.centerYAnchor, constant: -150.0)
         ]
         
         

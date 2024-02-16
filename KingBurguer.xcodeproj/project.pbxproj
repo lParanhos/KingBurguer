@@ -27,6 +27,7 @@
 		A8A691F32B5159F8007C2F23 /* SignUpCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8A691F22B5159F8007C2F23 /* SignUpCoordinator.swift */; };
 		A8BCBCBB2B4EF5A4003702CB /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BCBCBA2B4EF5A4003702CB /* SignInViewController.swift */; };
 		A8D410952B7E2E110035B4F8 /* FeedCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8D410942B7E2E110035B4F8 /* FeedCollectionViewCell.swift */; };
+		A8D410972B7E34360035B4F8 /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8D410962B7E34360035B4F8 /* TextField.swift */; };
 		A8FB2D0A2B569025000E6F07 /* HomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8FB2D092B569025000E6F07 /* HomeCoordinator.swift */; };
 		A8FB2D0C2B569045000E6F07 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8FB2D0B2B569045000E6F07 /* HomeViewController.swift */; };
 		A8FB2D0E2B56908D000E6F07 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8FB2D0D2B56908D000E6F07 /* HomeViewModel.swift */; };
@@ -56,6 +57,7 @@
 		A8A691F22B5159F8007C2F23 /* SignUpCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpCoordinator.swift; sourceTree = "<group>"; };
 		A8BCBCBA2B4EF5A4003702CB /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		A8D410942B7E2E110035B4F8 /* FeedCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCollectionViewCell.swift; sourceTree = "<group>"; };
+		A8D410962B7E34360035B4F8 /* TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
 		A8FB2D092B569025000E6F07 /* HomeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCoordinator.swift; sourceTree = "<group>"; };
 		A8FB2D0B2B569045000E6F07 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		A8FB2D0D2B56908D000E6F07 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
@@ -205,6 +207,7 @@
 			isa = PBXGroup;
 			children = (
 				A867F1CD2B57FA5200B4CFD3 /* LoadingButton.swift */,
+				A8D410962B7E34360035B4F8 /* TextField.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -353,6 +356,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A8A691EF2B5151F7007C2F23 /* SignUpViewController.swift in Sources */,
+				A8D410972B7E34360035B4F8 /* TextField.swift in Sources */,
 				A8A691E92B514530007C2F23 /* SignInViewModel.swift in Sources */,
 				A80A61522B5FD53D00E70A50 /* FeedTableViewCell.swift in Sources */,
 				A84865D72B59F06F00FEFC7E /* CouponViewController.swift in Sources */,
