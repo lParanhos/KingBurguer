@@ -25,7 +25,6 @@ class SignInViewController: UIViewController {
     //Declara e inicializa a variavel
     lazy var email: TextField = {
         let ed = TextField()
-        //  ed.borderStyle = .roundedRect
         ed.placeholder = "Entre com seu e-mail"
         ed.returnKeyType = .next
         ed.error = "E-mail inválido"
@@ -33,12 +32,10 @@ class SignInViewController: UIViewController {
         //ed.failure = validation
         //Forma encurtada
         ed.failure = {
-            return email.text.count <= 3
+            return ed.text.count <= 3
         }
         //delega os eventos para essa viewController
-        //    ed.delegate = self
-        //Necessário desabilitar sempre, para utilizar o auto layout
-        //  ed.translatesAutoresizingMaskIntoConstraints = false
+        ed.delegate = self
         return ed
     }()
     
@@ -47,13 +44,15 @@ class SignInViewController: UIViewController {
 //        return email.text.count <= 3
 //    }
     
-    lazy var password: UITextField = {
-        let ed = UITextField()
-        ed.borderStyle = .roundedRect
+    lazy var password: TextField = {
+        let ed = TextField()
         ed.placeholder = "Entre com sua senha"
         ed.returnKeyType = .done
+        ed.error = "Senha deve ter no minimo 8 caracteres"
+        ed.failure = {
+            return ed.text.count < 8
+        }
         ed.delegate = self
-        ed.translatesAutoresizingMaskIntoConstraints = false
         return ed
     }()
     //Lazy var inicializa o objeto quando invocamos ele
@@ -130,7 +129,6 @@ class SignInViewController: UIViewController {
             password.leadingAnchor.constraint(equalTo: email.leadingAnchor),
             password.trailingAnchor.constraint(equalTo: email.trailingAnchor),
             password.topAnchor.constraint(equalTo: email.bottomAnchor, constant: 10),
-            password.heightAnchor.constraint(equalToConstant: 50.0)
         ]
         
         
@@ -210,7 +208,7 @@ extension SignInViewController: UITextFieldDelegate {
             view.endEditing(true)
             return false
         } else {
-            password.becomeFirstResponder()
+            password.gainFocus()
         }
         
         return false

@@ -32,6 +32,19 @@ class TextField: UIView {
         }
     }
     
+    var delegate: UITextFieldDelegate? {
+        willSet {
+            ed.delegate = newValue
+        }
+    }
+    
+    override var tag: Int {
+        willSet{
+            super.tag = newValue
+            ed.tag = newValue
+        }
+    }
+    
     var text: String {
         get {
             return ed.text!
@@ -74,6 +87,10 @@ class TextField: UIView {
         
         NSLayoutConstraint.activate(edConstraints)
         NSLayoutConstraint.activate(errorLabelConstraints)
+    }
+    
+    func gainFocus() {
+        ed.becomeFirstResponder()
     }
     
     @objc func textFieldDidChanged(_ textField: UITextField){
