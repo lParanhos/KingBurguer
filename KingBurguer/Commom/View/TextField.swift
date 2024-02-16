@@ -32,11 +32,19 @@ class TextField: UIView {
         }
     }
     
+    var text: String {
+        get {
+            return ed.text!
+        }
+    }
+    
     var returnKeyType: UIReturnKeyType = .next {
         willSet {
             ed.returnKeyType = newValue
         }
     }
+    //Uma variável função, que não recebe parametros e o retorno é do tipo boleano
+    var failure: (() -> Bool)?
     
     var error: String?
     
@@ -69,8 +77,10 @@ class TextField: UIView {
     }
     
     @objc func textFieldDidChanged(_ textField: UITextField){
-        if let text = textField.text {
-            if text.count <= 3 {
+        guard let fn = failure else { return }
+        
+        if let error = error {
+            if fn() {
                 errorLabel.text = error
                 heightContraint.constant = 70
             } else {

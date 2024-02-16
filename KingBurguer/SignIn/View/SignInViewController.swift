@@ -25,16 +25,27 @@ class SignInViewController: UIViewController {
     //Declara e inicializa a variavel
     lazy var email: TextField = {
         let ed = TextField()
-      //  ed.borderStyle = .roundedRect
-       ed.placeholder = "Entre com seu e-mail"
-       ed.returnKeyType = .next
-       ed.error = "E-mail inválido"
+        //  ed.borderStyle = .roundedRect
+        ed.placeholder = "Entre com seu e-mail"
+        ed.returnKeyType = .next
+        ed.error = "E-mail inválido"
+        //Forma tradicional
+        //ed.failure = validation
+        //Forma encurtada
+        ed.failure = {
+            return email.text.count <= 3
+        }
         //delega os eventos para essa viewController
-    //    ed.delegate = self
+        //    ed.delegate = self
         //Necessário desabilitar sempre, para utilizar o auto layout
-      //  ed.translatesAutoresizingMaskIntoConstraints = false
+        //  ed.translatesAutoresizingMaskIntoConstraints = false
         return ed
     }()
+    
+    //Forma tradicional
+//    func validation() -> Bool {
+//        return email.text.count <= 3
+//    }
     
     lazy var password: UITextField = {
         let ed = UITextField()
