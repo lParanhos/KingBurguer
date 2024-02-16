@@ -32,10 +32,11 @@ class SignInViewController: UIViewController {
         //ed.failure = validation
         //Forma encurtada
         ed.failure = {
-            return ed.text.count <= 3
+            return !ed.text.isEmail()
         }
         //delega os eventos para essa viewController
         ed.delegate = self
+        ed.keyboardType = .emailAddress
         return ed
     }()
     

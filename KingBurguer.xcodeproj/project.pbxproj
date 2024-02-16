@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		A80A61522B5FD53D00E70A50 /* FeedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A80A61512B5FD53D00E70A50 /* FeedTableViewCell.swift */; };
 		A80A61542B5FDD7C00E70A50 /* HighlightView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A80A61532B5FDD7C00E70A50 /* HighlightView.swift */; };
+		A815416F2B7F81F7007F46DA /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = A815416E2B7F81F7007F46DA /* Strings.swift */; };
 		A84865D32B59F04900FEFC7E /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84865D22B59F04900FEFC7E /* FeedViewController.swift */; };
 		A84865D52B59F05A00FEFC7E /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84865D42B59F05A00FEFC7E /* ProfileViewController.swift */; };
 		A84865D72B59F06F00FEFC7E /* CouponViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84865D62B59F06F00FEFC7E /* CouponViewController.swift */; };
@@ -37,6 +38,7 @@
 /* Begin PBXFileReference section */
 		A80A61512B5FD53D00E70A50 /* FeedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedTableViewCell.swift; sourceTree = "<group>"; };
 		A80A61532B5FDD7C00E70A50 /* HighlightView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighlightView.swift; sourceTree = "<group>"; };
+		A815416E2B7F81F7007F46DA /* Strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
 		A84865D22B59F04900FEFC7E /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
 		A84865D42B59F05A00FEFC7E /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		A84865D62B59F06F00FEFC7E /* CouponViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CouponViewController.swift; sourceTree = "<group>"; };
@@ -199,6 +201,7 @@
 			isa = PBXGroup;
 			children = (
 				A867F1CC2B57FA4700B4CFD3 /* View */,
+				A815416E2B7F81F7007F46DA /* Strings.swift */,
 			);
 			path = Commom;
 			sourceTree = "<group>";
@@ -377,6 +380,7 @@
 				A80A61542B5FDD7C00E70A50 /* HighlightView.swift in Sources */,
 				A8FB2D0A2B569025000E6F07 /* HomeCoordinator.swift in Sources */,
 				A8FB2D0C2B569045000E6F07 /* HomeViewController.swift in Sources */,
+				A815416F2B7F81F7007F46DA /* Strings.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

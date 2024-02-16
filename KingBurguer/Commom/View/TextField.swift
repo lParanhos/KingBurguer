@@ -32,6 +32,16 @@ class TextField: UIView {
         }
     }
     
+    var keyboardType: UIKeyboardType = .default {
+        willSet {
+            if newValue == .emailAddress {
+                ed.autocapitalizationType = .none
+            }
+                
+            ed.keyboardType = newValue
+        }
+    }
+    
     var delegate: UITextFieldDelegate? {
         willSet {
             ed.delegate = newValue
