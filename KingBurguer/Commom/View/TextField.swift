@@ -42,6 +42,14 @@ class TextField: UIView {
         }
     }
     
+    var secureTextEntry: Bool = false {
+        willSet{
+            ed.isSecureTextEntry = newValue
+            // remove a auto gestão de senha da apple
+            ed.textContentType = .oneTimeCode
+        }
+    }
+    
     var delegate: UITextFieldDelegate? {
         willSet {
             ed.delegate = newValue
