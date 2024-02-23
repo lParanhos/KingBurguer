@@ -10,20 +10,20 @@ import Foundation
 //Uma forma de declarar uma assinatura, para que sempre que precisar notificar,
 // chamar essa assinatura, notifica quem a está utilizando
 
-protocol SignInViewModeDelegate {
-    func viewModelDidChange(state: SignInState)
+protocol SignInViewModelDelegate {
+    func viewModelDidChanged(state: SignInState)
 }
 
 class SignInViewModel {
     
-    var delegate: SignInViewModeDelegate?
+    var delegate: SignInViewModelDelegate?
     var coordinator: SignInCoordinator?
     
     var state: SignInState = .none {
         //dispara o bloco quando a variável é alterada
         didSet {
             //notifica quem está utilizando esse delegate, com o valor atualizado
-            delegate?.viewModelDidChange(state: state)
+            delegate?.viewModelDidChanged(state: state)
         }
     }
     

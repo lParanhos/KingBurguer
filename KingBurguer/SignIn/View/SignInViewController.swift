@@ -2,7 +2,7 @@
 //  SignInViewController.swift
 //  KingBurguer
 //
-//  Created by Leandro Paranhos on 10/01/24.
+//  Created by Tiago Aguiar on 17/11/22.
 //
 
 import Foundation
@@ -27,50 +27,49 @@ class SignInViewController: UIViewController {
         return v
     }()
     
-    //Declara e inicializa a variavel
+    // 1. definicao de layout
     lazy var email: TextField = {
         let ed = TextField()
         ed.placeholder = "Entre com seu e-mail"
         ed.returnKeyType = .next
-        ed.error = "E-mail inválido"
-        //Forma tradicional
-        //ed.failure = validation
-        //Forma encurtada
+        ed.error = "E-mail invalido"
+        ed.keyboardType = .emailAddress
+        ed.bitmask = SignInForm.email.rawValue
+        
+        // Forma "tradicional" de prog. funcional
+        // ed.failure = validation
+        
+        // Forma enxuta/encurtada de prog. funcional
         ed.failure = {
             return !ed.text.isEmail()
         }
-        //delega os eventos para essa viewController
         ed.delegate = self
-        ed.keyboardType = .emailAddress
-        ed.bitmask = SignInForm.email.rawValue
         return ed
     }()
     
-    //Forma tradicional
+    // Forma "tradicional" de prog. funcional
 //    func validation() -> Bool {
 //        return email.text.count <= 3
 //    }
+    
     
     lazy var password: TextField = {
         let ed = TextField()
         ed.placeholder = "Entre com sua senha"
         ed.returnKeyType = .done
-        ed.secureTextEntry = true
         ed.error = "Senha deve ter no minimo 8 caracteres"
+        ed.secureTextEntry = true
+        ed.bitmask = SignInForm.password.rawValue
         ed.failure = {
-            return ed.text.count < 8
+            return ed.text.count <= 8
         }
         ed.delegate = self
-        ed.bitmask = SignInForm.email.rawValue
         return ed
     }()
-    //Lazy var inicializa o objeto quando invocamos ele
-    //Precisamos usar a lazy, pois ao passar o self (SignViewController) a mesma ainda não foi criada
-    // Antes o send era criado e depois e a ViewController, com a lazy é o inverso
+    
     lazy var send: LoadingButton = {
         let btn = LoadingButton()
         btn.title = "Entrar"
-        btn.titleColor = .white
         btn.backgroundColor = .red
         btn.enable(false)
         btn.addTarget(self, action: #selector(sendDidTap))
@@ -83,23 +82,30 @@ class SignInViewController: UIViewController {
         btn.setTitleColor(.label, for: .normal)
         btn.translatesAutoresizingMaskIntoConstraints = false
         btn.addTarget(self, action: #selector(registerDidTap), for: .touchUpInside)
-        
         return btn
     }()
     
-    var viewModel : SignInViewModel? {
+    var viewModel: SignInViewModel? {
         didSet {
-            //Delega as informações para a classe atual
             viewModel?.delegate = self
         }
     }
     
-    var bitmaskResult = 0
+    var bitmaskResult: Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
-            
+        
+        // TODO: explicar o que e o super e o ciclo das viewControllers
+        
+        // quando for enum podemos omitir o nome da enum, ou seja, podemos apenas atribuir o valor
+        // direto que ele vai entender
         view.backgroundColor = .systemBackground
+        
+        navigationItem.title = "Login"
+        
+        
+        
         container.addSubview(email)
         container.addSubview(password)
         container.addSubview(send)
@@ -108,8 +114,6 @@ class SignInViewController: UIViewController {
         scroll.addSubview(container)
         view.addSubview(scroll)
         
-        navigationItem.title = "Login"
-        
         let scrollContraints = [
             scroll.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             scroll.trailingAnchor.constraint(equalTo: view.trailingAnchor),
@@ -117,69 +121,105 @@ class SignInViewController: UIViewController {
             scroll.bottomAnchor.constraint(equalTo: view.bottomAnchor),
         ]
         
+        let heightConstraint = container.heightAnchor.constraint(equalTo: view.heightAnchor)
+        heightConstraint.priority = .defaultLow
+        heightConstraint.isActive = true
+        
         let containerCosntraints = [
             container.widthAnchor.constraint(equalTo: view.widthAnchor),
             container.topAnchor.constraint(equalTo: scroll.topAnchor),
             container.leadingAnchor.constraint(equalTo: scroll.leadingAnchor),
             container.trailingAnchor.constraint(equalTo: scroll.trailingAnchor),
             container.bottomAnchor.constraint(equalTo: scroll.bottomAnchor),
+            
             container.heightAnchor.constraint(equalToConstant: 490)
         ]
+
         
         let emailConstraints = [
-            // 1. coordenadas da esquerda
+            // 1. as coordenadas da esquerda (leading)
             email.leadingAnchor.constraint(equalTo: container.leadingAnchor, constant: 10),
-            // 2. coordenadas da direita
+            // 2. as coordenadas da direita (trailing)
             email.trailingAnchor.constraint(equalTo: container.trailingAnchor, constant: -10),
-            // 3. coordenadas do centro Y
-            email.centerYAnchor.constraint(equalTo: container.centerYAnchor, constant: -150.0)
+            // 3. as coordenadas do centro Y
+            email.centerYAnchor.constraint(equalTo: container.centerYAnchor, constant: -150.0),
         ]
-        
         
         let passwordConstraints = [
             password.leadingAnchor.constraint(equalTo: email.leadingAnchor),
             password.trailingAnchor.constraint(equalTo: email.trailingAnchor),
-            password.topAnchor.constraint(equalTo: email.bottomAnchor, constant: 10),
+            password.topAnchor.constraint(equalTo: email.bottomAnchor, constant: 10.0),
         ]
-        
         
         let sendConstraints = [
             send.leadingAnchor.constraint(equalTo: container.leadingAnchor),
             send.trailingAnchor.constraint(equalTo: container.trailingAnchor),
+//            send.bottomAnchor.constraint(equalTo: container.bottomAnchor, constant: -20.0),
             send.topAnchor.constraint(equalTo: password.bottomAnchor, constant: 10.0),
-            send.heightAnchor.constraint(equalToConstant: 50.0)
+            send.heightAnchor.constraint(equalToConstant: 50.0),
         ]
         
         let registerConstraints = [
-            register.leadingAnchor.constraint(equalTo: container.leadingAnchor),
-            register.trailingAnchor.constraint(equalTo: container.trailingAnchor),
-            register.topAnchor.constraint(equalTo: send.bottomAnchor, constant: 10.0),
+            register.leadingAnchor.constraint(equalTo: email.leadingAnchor),
+            register.trailingAnchor.constraint(equalTo: email.trailingAnchor),
+            register.topAnchor.constraint(equalTo: send.bottomAnchor, constant: 15.0),
             register.heightAnchor.constraint(equalToConstant: 50.0)
         ]
         
-        NSLayoutConstraint.activate(scrollContraints)
-        NSLayoutConstraint.activate(containerCosntraints)
         NSLayoutConstraint.activate(emailConstraints)
         NSLayoutConstraint.activate(passwordConstraints)
         NSLayoutConstraint.activate(sendConstraints)
         NSLayoutConstraint.activate(registerConstraints)
-
+        
+        NSLayoutConstraint.activate(scrollContraints)
+        NSLayoutConstraint.activate(containerCosntraints)
+        
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(onKeyboardNotification),
+                                               name: UIResponder.keyboardWillHideNotification,
+                                               object: nil)
+        
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(onKeyboardNotification),
+                                               name: UIResponder.keyboardWillShowNotification,
+                                               object: nil)
     }
     
-    //Quando a view apareceu
+    @objc func onKeyboardNotification(_ notification: Notification) {
+        let visible = notification.name == UIResponder.keyboardWillShowNotification
+        
+        let keyboardFrame = visible
+            ? UIResponder.keyboardFrameEndUserInfoKey
+            : UIResponder.keyboardFrameBeginUserInfoKey
+        
+        if let keyboardSize = (notification.userInfo?[keyboardFrame] as? NSValue)?.cgRectValue {
+            onKeyboardChanged(visible, height: keyboardSize.height)
+        }
+        
+    }
+    
+    func onKeyboardChanged(_ visible: Bool, height: CGFloat) {
+        if (!visible) {
+            scroll.contentInset = .zero
+            scroll.scrollIndicatorInsets = .zero
+        } else {
+            let contentInsets = UIEdgeInsets(top: 0.0, left: 0.0, bottom: height, right: 0.0)
+            scroll.contentInset = contentInsets
+            scroll.scrollIndicatorInsets = contentInsets
+        }
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
-        //Escuta evento de touch
         view.addGestureRecognizer(tap)
     }
     
-    @objc func dismissKeyboard(_ view: UITapGestureRecognizer){
+    @objc func dismissKeyboard(_ view: UITapGestureRecognizer) {
         self.view.endEditing(true)
     }
     
-    // estrutura padrão da função
-    //ao passar o _ não precisamos passar o nome da variável
+    // 2. eventos de touch
     @objc func sendDidTap(_ sender: UIButton) {
         viewModel?.send()
     }
@@ -187,59 +227,52 @@ class SignInViewController: UIViewController {
     @objc func registerDidTap(_ sender: UIButton) {
         viewModel?.goToSignUp()
     }
-}
 
-//Maneira para separar os observadores da classe
-// Com essa estratégia deixamos a controller apenas com responsabilidades de layout
-// e eventos de touch
-extension SignInViewController: SignInViewModeDelegate {
-    //observador
-    func viewModelDidChange(state: SignInState) {
-        switch(state) {
-        case .none:
-            break
-        case .loading:
-            send.startLoading(true)
-            break
-        case .goToHome:
-            viewModel?.goToHome()
-            break
-        case .error(let msg):
-            let alert = UIAlertController(title: "Titulo", message: msg, preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Ok", style: .default))
-            self.present(alert, animated: true)
-            break
-        }
-    }
 }
 
 extension SignInViewController: TextFieldDelegate {
-    func textFieldDidChanged(isValid: Bool, bitmask: Int) {
-        if isValid  {
-            // OR bit a bit
-            self.bitmaskResult = self.bitmaskResult | bitmask
-        } else {
-            // remove o campo invalido usando NOR e AND
-            self.bitmaskResult = self.bitmaskResult & ~bitmask
-        }
-        // e-mail E password precisam ser validos!!!
-        self.send.enable((SignInForm.email.rawValue & self.bitmaskResult != 0)
-                         && (SignInForm.password.rawValue & self.bitmaskResult != 0))
-
-        if (1 & self.bitmaskResult != 0)
-           && (2 & self.bitmaskResult != 0) {
-           print("Botão ativado")
-        }
-    }
-    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        if(textField.returnKeyType == .done){
+        if (textField.returnKeyType == .done) {
             view.endEditing(true)
-            return false
         } else {
             password.gainFocus()
         }
-        
         return false
+    }
+    func textFieldDidChanged(isValid: Bool, bitmask: Int) {
+        if isValid {
+            self.bitmaskResult = self.bitmaskResult | bitmask
+        } else {
+            self.bitmaskResult = self.bitmaskResult & ~bitmask
+        }
+        
+        // e-mail E password precisam ser validos!!!
+        self.send.enable((SignInForm.email.rawValue & self.bitmaskResult != 0)
+                         && (SignInForm.password.rawValue & self.bitmaskResult != 0))
+    }
+}
+
+// 3. observers
+extension SignInViewController: SignInViewModelDelegate {
+    func viewModelDidChanged(state: SignInState) {
+        switch(state) {
+            case .none:
+                break
+            case .loading:
+                send.startLoading(true)
+                break
+            case .goToHome:
+                // navegar para a tela princial
+                viewModel?.goToHome()
+                break
+            case .error(let msg):
+                let alert = UIAlertController(title: "Titulo", message: msg, preferredStyle: .alert)
+                
+                alert.addAction(UIAlertAction(title: "Ok", style: .default))
+                
+                self.present(alert, animated: true)
+                
+                break
+        }
     }
 }

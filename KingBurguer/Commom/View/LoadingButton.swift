@@ -55,6 +55,7 @@ class LoadingButton: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    //DESCRIBE BUG
     func enable(_ isEnabled: Bool) {
         button.isEnabled = isEnabled
         if isEnabled {
