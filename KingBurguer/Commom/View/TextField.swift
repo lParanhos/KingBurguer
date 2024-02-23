@@ -7,6 +7,12 @@
 
 import UIKit
 
+
+
+protocol TextFieldDelegate: UITextFieldDelegate {
+    func textFieldDidChanged(isValid: Bool, bitmask: Int)
+}
+
 class TextField: UIView {
     
     lazy var ed: UITextField = {
@@ -25,6 +31,8 @@ class TextField: UIView {
         
         return lb
     }()
+    
+    var bitMask: Int = 0
     
     var placeholder: String? {
         willSet{
@@ -50,7 +58,7 @@ class TextField: UIView {
         }
     }
     
-    var delegate: UITextFieldDelegate? {
+    var delegate: TextFieldDelegate? {
         willSet {
             ed.delegate = newValue
         }
@@ -118,9 +126,11 @@ class TextField: UIView {
             if fn() {
                 errorLabel.text = error
                 heightContraint.constant = 70
+                delegate?.textFieldDidChanged(isValid: false, bitmask: bitMask)
             } else {
                 errorLabel.text = ""
                 heightContraint.constant = 50
+                delegate?.textFieldDidChanged(isValid: true, bitmask: bitMask)
             }
         }
         //Força uma atualização das subviews caso seja necessário

@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 
+
 class SignInViewController: UIViewController {
     
     let scroll: UIScrollView = {
@@ -37,6 +38,7 @@ class SignInViewController: UIViewController {
         //delega os eventos para essa viewController
         ed.delegate = self
         ed.keyboardType = .emailAddress
+        ed.bitMask = 1
         return ed
     }()
     
@@ -55,6 +57,7 @@ class SignInViewController: UIViewController {
             return ed.text.count < 8
         }
         ed.delegate = self
+        ed.bitMask = 2
         return ed
     }()
     //Lazy var inicializa o objeto quando invocamos ele
@@ -86,6 +89,7 @@ class SignInViewController: UIViewController {
         }
     }
     
+    var bitmaskResult = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -204,7 +208,21 @@ extension SignInViewController: SignInViewModeDelegate {
     }
 }
 
-extension SignInViewController: UITextFieldDelegate {
+extension SignInViewController: TextFieldDelegate {
+    func textFieldDidChanged(isValid: Bool, bitmask: Int) {
+        print("")
+        if isValid  {
+            // OR bit a bit
+            self.bitmaskResult = self.bitmaskResult | bitmask
+            print(self.bitmaskResult)
+        }
+        
+        if (1 & self.bitmaskResult != 0)
+            && (2 & self.bitmaskResult != 0) {
+            print("Botão ativado")
+        }
+    }
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if(textField.returnKeyType == .done){
             view.endEditing(true)
