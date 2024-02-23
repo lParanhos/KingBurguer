@@ -30,7 +30,7 @@ class SignUpViewController: UIViewController {
         ed.tag = 1
         ed.delegate = self
         ed.error = "Nome deve ter no minimo 3 caracteres"
-        ed.bitMask = 1
+        ed.bitmask = 1
         ed.failure = {
             return ed.text.count < 3
         }

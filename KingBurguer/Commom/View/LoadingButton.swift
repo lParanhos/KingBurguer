@@ -55,6 +55,15 @@ class LoadingButton: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    func enable(_ isEnabled: Bool) {
+        button.isEnabled = isEnabled
+        if isEnabled {
+            alpha = 1
+        } else {
+            alpha = 0.5
+        }
+    }
+    
     func addTarget(_ target: Any?, action: Selector) {
         /* Self é a classe que vai conter a função que será disparada
          action: é a função a ser disparada, com o selector expomos nossa função para o objective-c
@@ -75,7 +84,6 @@ class LoadingButton: UIView {
             button.setTitle(title, for: .normal)
             progress.stopAnimating()
             alpha = 1.0
-           
         }
     }
     
