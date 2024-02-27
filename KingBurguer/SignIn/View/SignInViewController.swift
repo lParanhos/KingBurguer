@@ -9,8 +9,8 @@ import Foundation
 import UIKit
 
 enum SignInForm: Int {
-    case email    = 1
-    case password = 2
+    case email    = 0x1
+    case password = 0x2
 }
 
 class SignInViewController: UIViewController {
@@ -152,8 +152,8 @@ class SignInViewController: UIViewController {
         ]
         
         let sendConstraints = [
-            send.leadingAnchor.constraint(equalTo: container.leadingAnchor),
-            send.trailingAnchor.constraint(equalTo: container.trailingAnchor),
+            send.leadingAnchor.constraint(equalTo: email.leadingAnchor),
+            send.trailingAnchor.constraint(equalTo: email.trailingAnchor),
 //            send.bottomAnchor.constraint(equalTo: container.bottomAnchor, constant: -20.0),
             send.topAnchor.constraint(equalTo: password.bottomAnchor, constant: 10.0),
             send.heightAnchor.constraint(equalToConstant: 50.0),
@@ -241,8 +241,10 @@ extension SignInViewController: TextFieldDelegate {
     }
     func textFieldDidChanged(isValid: Bool, bitmask: Int) {
         if isValid {
+            //OR bit a bit
             self.bitmaskResult = self.bitmaskResult | bitmask
         } else {
+            // NOT e AND bit a bit
             self.bitmaskResult = self.bitmaskResult & ~bitmask
         }
         
