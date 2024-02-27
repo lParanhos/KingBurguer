@@ -68,6 +68,7 @@ class SignUpViewController: UIViewController {
         ed.delegate = self
         ed.error = "Senha deve ter no minimo 8 caracteres"
         ed.bitmask = SignUpForm.password.rawValue
+        ed.secureTextEntry = true
         ed.failure = {
             return ed.text.count < 8
         }
@@ -79,10 +80,11 @@ class SignUpViewController: UIViewController {
         ed.placeholder = "Entre com seu CPF"
         ed.tag = 4
         ed.returnKeyType = .next
+        ed.maskField = Mask(mask: "###.###.###-##")
         ed.delegate = self
         ed.error = "CPF deve ter no minimo 11 digitos"
         ed.bitmask = SignUpForm.document.rawValue
-        ed.secureTextEntry = true
+        ed.keyboardType = .numberPad
         ed.failure = {
             return ed.text.count != 14
         }
@@ -96,9 +98,19 @@ class SignUpViewController: UIViewController {
         ed.returnKeyType = .done
         ed.delegate = self
         ed.error = "Data de nascimento deve ser dd/MM/yyyy"
+        ed.maskField = Mask(mask: "##/##/####")
         ed.bitmask = SignUpForm.birthday.rawValue
         ed.failure = {
-            return ed.text.count < 3
+            let invalidCount = ed.text.count != 10
+            
+            let dt = DateFormatter()
+            dt.locale = Locale(identifier: "en_US_POSIX")
+            dt.dateFormat = "dd/MM/yyyy"
+            
+            let date = dt.date(from: ed.text)
+            let invalidDate = date == nil
+            
+            return invalidDate || invalidCount
         }
         return ed
     }()
