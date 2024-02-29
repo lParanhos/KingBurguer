@@ -27,11 +27,7 @@ class SignUpViewModel {
     
     func send() {
         state = .loading
-        
-        //Timer de 2 segundos
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            self.state = .goToHome
-        }
+        WebServiceAPI.shared.createUser()
     }
     
     func goToHome() {
