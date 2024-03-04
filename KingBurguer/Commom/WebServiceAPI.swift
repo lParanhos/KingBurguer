@@ -9,6 +9,9 @@ import Foundation
 
 //Padrão SINGLETON
 class WebServiceAPI {
+    
+    static let apiKey = ""
+    
     // Inicia a clase
     static let shared = WebServiceAPI()
     
@@ -41,6 +44,7 @@ class WebServiceAPI {
             request.httpMethod = "POST"
             request.setValue("application/json", forHTTPHeaderField: "Content-Type")
             request.setValue("application/json", forHTTPHeaderField: "accept")
+            request.setValue(WebServiceAPI.apiKey, forHTTPHeaderField: "x-secret-key")
             request.httpBody = jsonRequest
             
             

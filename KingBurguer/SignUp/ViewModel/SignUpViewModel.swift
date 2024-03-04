@@ -15,7 +15,7 @@ class SignUpViewModel {
     var name = "UserA"
     var email = "blahA@gmail.com"
     var password = "12345678"
-    var document = "111.222.333.11"
+    var document = "11122233311"
     var birthday = "2020-10-19"
     
     var delegate: SignUpViewModeDelegate?
