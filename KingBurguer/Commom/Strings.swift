@@ -15,6 +15,10 @@ extension String {
         return NSPredicate(format: "SELF MATCHES %@", regEx).evaluate(with: self)
     }
     
+    var digits: String {
+        return components(separatedBy: CharacterSet.decimalDigits.inverted).joined()
+    }
+    
     func charAtIndex(index: Int) -> Character? {
         var indexCurrent = 0
         for char in self {

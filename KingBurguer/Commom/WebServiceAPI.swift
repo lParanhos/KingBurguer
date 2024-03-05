@@ -15,24 +15,11 @@ class WebServiceAPI {
     // Inicia a clase
     static let shared = WebServiceAPI()
     
-    func createUser(password: String,
-                    name: String,
-                    email: String,
-                    document: String,
-                    birthday: String
-    ) {
-        let json: [String: Any] = [
-            "password": password,
-            "name": name,
-            "email": email,
-            "document": document,
-            "birthday": birthday
-        ]
-        
+    func createUser(request: SignUpRequest) {
         do {
             //converte o dictionary para json
-            let jsonRequest = try JSONSerialization.data(withJSONObject: json)
-            
+            //let jsonRequest = try JSONSerialization.data(withJSONObject: json)
+            let jsonRequest = try JSONEncoder().encode(request)
             let endpoint = "https://hades.tiagoaguiar.co/kingburguer/users"
             guard let url = URL(string: endpoint) else {
                 print("ERROR: URL \(endpoint) malformed!")

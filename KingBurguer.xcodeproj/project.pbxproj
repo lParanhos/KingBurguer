@@ -28,6 +28,7 @@
 		A8A691EF2B5151F7007C2F23 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8A691EE2B5151F7007C2F23 /* SignUpViewController.swift */; };
 		A8A691F12B515688007C2F23 /* SignInCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8A691F02B515688007C2F23 /* SignInCoordinator.swift */; };
 		A8A691F32B5159F8007C2F23 /* SignUpCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8A691F22B5159F8007C2F23 /* SignUpCoordinator.swift */; };
+		A8AC6EAC2B969B50004421F2 /* SignUpRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8AC6EAB2B969B50004421F2 /* SignUpRequest.swift */; };
 		A8BCBCBB2B4EF5A4003702CB /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BCBCBA2B4EF5A4003702CB /* SignInViewController.swift */; };
 		A8D410952B7E2E110035B4F8 /* FeedCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8D410942B7E2E110035B4F8 /* FeedCollectionViewCell.swift */; };
 		A8D410972B7E34360035B4F8 /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8D410962B7E34360035B4F8 /* TextField.swift */; };
@@ -61,6 +62,7 @@
 		A8A691EE2B5151F7007C2F23 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		A8A691F02B515688007C2F23 /* SignInCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInCoordinator.swift; sourceTree = "<group>"; };
 		A8A691F22B5159F8007C2F23 /* SignUpCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpCoordinator.swift; sourceTree = "<group>"; };
+		A8AC6EAB2B969B50004421F2 /* SignUpRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpRequest.swift; sourceTree = "<group>"; };
 		A8BCBCBA2B4EF5A4003702CB /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		A8D410942B7E2E110035B4F8 /* FeedCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCollectionViewCell.swift; sourceTree = "<group>"; };
 		A8D410962B7E34360035B4F8 /* TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
@@ -233,6 +235,7 @@
 		A8A691EC2B5151DC007C2F23 /* SignUp */ = {
 			isa = PBXGroup;
 			children = (
+				A8AC6EAA2B969B3C004421F2 /* Model */,
 				A85A18822B55CBE7004D0B06 /* ViewModel */,
 				A8A691ED2B5151E6007C2F23 /* View */,
 				A8A691F22B5159F8007C2F23 /* SignUpCoordinator.swift */,
@@ -246,6 +249,14 @@
 				A8A691EE2B5151F7007C2F23 /* SignUpViewController.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		A8AC6EAA2B969B3C004421F2 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				A8AC6EAB2B969B50004421F2 /* SignUpRequest.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		A8BCBCB82B4EF570003702CB /* SignIn */ = {
@@ -371,6 +382,7 @@
 				A84865D72B59F06F00FEFC7E /* CouponViewController.swift in Sources */,
 				A85A18862B55CD74004D0B06 /* SigUpState.swift in Sources */,
 				A8D410952B7E2E110035B4F8 /* FeedCollectionViewCell.swift in Sources */,
+				A8AC6EAC2B969B50004421F2 /* SignUpRequest.swift in Sources */,
 				A8BCBCBB2B4EF5A4003702CB /* SignInViewController.swift in Sources */,
 				A85428012B483F850001DD7B /* AppDelegate.swift in Sources */,
 				A85A18842B55CCB2004D0B06 /* SignUpViewModel.swift in Sources */,

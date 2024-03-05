@@ -10,7 +10,7 @@ import UIKit
 
 
 protocol TextFieldDelegate: UITextFieldDelegate {
-    func textFieldDidChanged(isValid: Bool, bitmask: Int)
+    func textFieldDidChanged(isValid: Bool, bitmask: Int, text: String)
 }
 
 class TextField: UIView {
@@ -135,11 +135,11 @@ class TextField: UIView {
             if fn() {
                 errorLabel.text = error
                 heightContraint.constant = 70
-                delegate?.textFieldDidChanged(isValid: false, bitmask: bitmask)
+                delegate?.textFieldDidChanged(isValid: false, bitmask: bitmask, text: textField.text!)
             } else {
                 errorLabel.text = ""
                 heightContraint.constant = 50
-                delegate?.textFieldDidChanged(isValid: true, bitmask: bitmask)
+                delegate?.textFieldDidChanged(isValid: true, bitmask: bitmask, text: textField.text!)
             }
         }
         //Força uma atualização das subviews caso seja necessário

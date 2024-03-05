@@ -264,6 +264,7 @@ extension SignUpViewController: SignUpViewModeDelegate {
         case .none:
             break
         case .loading:
+            send.startLoading(true)
             break
         case .goToHome:
             viewModel?.goToHome()
@@ -296,7 +297,7 @@ extension SignUpViewController: TextFieldDelegate {
         return false
     }
     
-    func textFieldDidChanged(isValid: Bool, bitmask: Int) {
+    func textFieldDidChanged(isValid: Bool, bitmask: Int, text: String) {
         if isValid {
             //OR bit a bit
             self.bitmaskResult = self.bitmaskResult | bitmask
@@ -313,6 +314,18 @@ extension SignUpViewController: TextFieldDelegate {
             (SignUpForm.document.rawValue & self.bitmaskResult != 0) &&
             (SignUpForm.birthday.rawValue & self.bitmaskResult != 0)
         )
+        
+        if bitmask == SignUpForm.name.rawValue {
+            viewModel?.name = text
+        } else if bitmask == SignUpForm.email.rawValue {
+            viewModel?.email = text
+        } else if bitmask == SignUpForm.password.rawValue {
+            viewModel?.password = text
+        } else if bitmask == SignUpForm.birthday.rawValue {
+            viewModel?.birthday = text
+        } else if bitmask == SignUpForm.document.rawValue {
+            viewModel?.document = text
+        }
     }
 }
 
